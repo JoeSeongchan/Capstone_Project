@@ -1,7 +1,8 @@
 <resources>
   <dimen name="app_head_text_size">10sp</dimen>
   <dimen name="chat_msg_text_size">20sp</dimen>
-  <string name="app_name">Chatting</string>
   <dimen name="max_chat_width">30dp</dimen>
+  <string name="app_name">Chatting</string>
+  <string name="full_chattext_default">default string value</string>
 
 </resources>

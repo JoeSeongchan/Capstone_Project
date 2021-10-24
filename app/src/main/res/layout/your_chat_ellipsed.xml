@@ -39,6 +39,21 @@
       android:maxLines="7"
       android:ellipsize="end"
       />
+    <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button_fullTextButton"
+      android:textStyle="bold"
+      android:layout_width="match_parent"
+      android:layout_height="12sp"
+      android:layout_margin="10dp"
+      android:layout_gravity="right"
+      android:padding="0dp"
+      android:background="@color/your_chat_color"
+      android:gravity="bottom"
+      android:text="전체보기"
+      android:textColor="@color/blackTextColor"
+      android:textSize="10sp"
+      android:onClick="showFullChatText"
+      />
   </LinearLayout>
 
 </LinearLayout>

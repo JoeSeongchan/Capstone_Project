@@ -8,4 +8,7 @@
   <color name="whiteTextColor">#ffffff</color>
   <color name="blackTextColor">#000000</color>
   <color name="chatRoomBackground">#fffafb</color>
+  <color name="my_chat_color">#007AFF</color>
+  <color name="your_chat_color">#D1D1D6</color>
+  <color name="chat_gray_color">#B7B8C0</color>
 </resources>
