@@ -1,0 +1,101 @@
+package com.example.chatting.chat.adapter;
+
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.chatting.R;
+import com.example.chatting.chat.data.ChatData;
+import com.example.chatting.chat.viewholder.ChatViewHolder;
+import com.example.chatting.chat.viewholder.MyChatViewHolder;
+import com.example.chatting.chat.viewholder.YourChatViewHolder;
+import java.util.List;
+
+public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
+
+  // view holder type 설정.
+  private static final int TYPE_MY_CHAT = 0;
+  private static final int TYPE_YOUR_CHAT = 1;
+  // 데이터.
+  private final List<ChatData> dataList;  // 데이터 목록
+  private final String myNick;            // 채팅 보낸 사람의 닉네임.
+  // 디스플레이 크기.
+  private final float DISPLAY_HEIGHT_PIXEL;
+  private final float DISPLAY_WIDTH_PIXEL;
+
+  private Context context;
+
+  // 데이터 설정.
+  public ChatAdapter(List<ChatData> dataList, String myNick, Context context) {
+    this.dataList = dataList;
+    this.myNick = myNick;
+    this.context = context;
+    this.DISPLAY_HEIGHT_PIXEL = context.getResources().getDisplayMetrics().heightPixels;
+    this.DISPLAY_WIDTH_PIXEL = context.getResources().getDisplayMetrics().widthPixels;
+  }
+
+  // 새로운 chat view holder 만드는 함수.
+  @NonNull
+  @Override
+  public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    View view;
+    switch (viewType) {
+      // my chat 인 경우,
+      case TYPE_MY_CHAT:
+        view = LayoutInflater.from(context).inflate(R.layout.my_chat, parent, false);
+        Log.d("Create_view_holder", "My chat");
+        return new MyChatViewHolder(view);
+      // your chat 인 경우,
+      default:
+        view = LayoutInflater.from(context).inflate(R.layout.your_chat, parent, false);
+        Log.d("Create_view_holder", "Your chat");
+        return new YourChatViewHolder(view);
+    }
+  }
+
+  // chat view holder 의 내용 수정하는 함수. (layout manager 에 의해 호출.)
+  @Override
+  public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
+    if (holder instanceof MyChatViewHolder) {
+      ((MyChatViewHolder) holder).bind(dataList.get(position));
+      Log.d("Bind_view_holder", "My chat" +
+          "\nType of holder : " + holder.getClass().getName() +
+          "\nType of data located in #" + position + " : " + getItemViewType(position) +
+          "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
+          "\n.");
+    } else {
+      ((YourChatViewHolder) holder).bind(dataList.get(position));
+      Log.d("Bind_view_holder", "Your chat" +
+          "\nType of holder : " + holder.getClass().getName() +
+          "\nType of data located in #" + position + " : " + getItemViewType(position) +
+          "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
+          "\n.");
+    }
+  }
+
+  // 데이터 목록의 크기 구하는 함수.
+  @Override
+  public int getItemCount() {
+    return dataList.size();
+  }
+
+  // 데이터 목록 안 데이터의 타입 구하는 함수.
+  // 내 채팅 or 상대방 채팅.
+  @Override
+  public int getItemViewType(int position) {
+    if (dataList.get(position).getNickname().compareTo(myNick) == 0) {
+      return TYPE_MY_CHAT;
+    }
+    return TYPE_YOUR_CHAT;
+  }
+
+  // 채팅 추가
+  public void addChat(ChatData chat) {
+    dataList.add(chat);
+    // notify the position of newly added item
+    notifyItemInserted(dataList.size() - 1);
+  }
+}
