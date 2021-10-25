@@ -1,16 +1,17 @@
 package com.example.chatting.chat.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.selection.SelectionTracker;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatting.R;
+import com.example.chatting.ShowFullChatTextActivity;
 import com.example.chatting.chat.data.ChatData;
 import com.example.chatting.chat.viewholder.ChatViewHolder;
 import com.example.chatting.chat.viewholder.ellipsed.EllipsedChatViewHolder;
@@ -110,9 +111,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
     } else if (holder instanceof EllipsedChatViewHolder) {
       EllipsedChatViewHolder ellipsedChatViewHolder = (EllipsedChatViewHolder) holder;
       ellipsedChatViewHolder.setBtnFullTextClickListener(view -> {
-        Toast toast = Toast
-            .makeText(this.context, ellipsedChatViewHolder.getMsgfullText(), Toast.LENGTH_LONG);
-        toast.show();
+//        Toast toast = Toast
+//            .makeText(this.context, ellipsedChatViewHolder.getMsgfullText(), Toast.LENGTH_LONG);
+//        toast.show();
+        String msgFullText = ellipsedChatViewHolder.getMsgfullText();
+        Intent intent = new Intent(this.context, ShowFullChatTextActivity.class);
+        intent.putExtra("msgFullText", msgFullText);
+        this.context.startActivity(intent);
       });
       if (holder instanceof MyEllipsedChatViewHolder) {
         ((MyEllipsedChatViewHolder) holder).bind(dataList.get(position));

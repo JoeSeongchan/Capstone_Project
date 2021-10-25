@@ -6,8 +6,8 @@
   android:layout_height="match_parent"
   tools:context=".ShowFullChatTextActivity">
 
-  <EditText
-    android:id="@+id/editTextTextMultiLine"
+  <TextView
+    android:id="@+id/textView_msgFullText"
     android:layout_width="0dp"
     android:layout_height="0dp"
     android:layout_marginTop="30dp"
@@ -17,10 +17,9 @@
     android:padding="10dp"
     android:ems="10"
     android:gravity="start|top"
-    android:inputType="textMultiLine"
     android:text="@string/full_chattext_default"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
