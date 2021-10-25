@@ -9,6 +9,12 @@ public class ChatData implements Serializable {
   private String nickname;
   private LocalDateTime dateTime;
 
+  public ChatData(String msg, String nickname, LocalDateTime dateTime) {
+    this.msg = msg;
+    this.nickname = nickname;
+    this.dateTime = dateTime;
+  }
+
   public String getMsg() {
     return msg;
   }

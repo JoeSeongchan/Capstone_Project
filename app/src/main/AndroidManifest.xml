@@ -11,13 +11,14 @@
     android:theme="@style/BaseAppTheme">
     <activity
       android:exported="true"
-      android:name=".ChatGroupActivity" />
+      android:name=".ChatActivity" />
     <activity
       android:exported="true"
       android:name=".ShowFullChatTextActivity" />
+    <!--      android:name=".ChatActivity">-->
     <activity
       android:exported="true"
-      android:name=".ChatActivity">
+      android:name=".ChatGroupActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

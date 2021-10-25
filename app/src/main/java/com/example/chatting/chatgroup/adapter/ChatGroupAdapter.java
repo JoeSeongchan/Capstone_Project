@@ -16,8 +16,8 @@ import java.util.List;
 
 public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> {
 
-  // 데이터.
-  private final List<ChatGroupData> dataList;
+
+  private final List<ChatGroupData> dataList;   // 데이터.
 
   private Context context;
 
@@ -37,7 +37,7 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> 
   @Override
   public ChatGroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(context).inflate(R.layout.chat_group, parent, false);
-    Log.d("adapter_group", " - create view holder about chat group." +
+    Log.d("ChatGroupAdapter", " - onCreateViewHolder" +
         "\nType of holder : " + ChatGroupViewHolder.class.getSimpleName());
     return new ChatGroupViewHolder(view);
   }
@@ -46,7 +46,7 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> 
   @Override
   public void onBindViewHolder(@NonNull ChatGroupViewHolder holder, int position) {
     holder.bind(getData(position));
-    Log.d("adapter_group", " - bind view holder about chat group" +
+    Log.d("ChatGroupAdapter", " - onBindViewHolder" +
         "\nType of holder : " + holder.getClass().getSimpleName() +
         "\nID of chat group located in #" + position + " : " + getData(position).getChatGroupId() +
         "\n.");
@@ -75,6 +75,19 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> 
     dataList.add(data);
     // 새로 추가한 데이터의 위치를 알려준다.
     notifyItemInserted(dataList.size() - 1);
+  }
+
+  // chat group data 변경 시 업데이트하는 함수.
+  // 데이터 목록 & view holder 업데이트.
+  public void updateChatGroup(ChatGroupData inputData) {
+    for (int i = 0; i < dataList.size(); i++) {
+      ChatGroupData data = dataList.get(i);
+      if (data.getChatGroupId() == inputData.getChatGroupId()) {
+        dataList.set(i, inputData);   // 데이터 목록 업데이트.
+        notifyItemChanged(i);         // view holder 업데이트.
+        return;
+      }
+    }
   }
 
   // Selection 구현에 사용.

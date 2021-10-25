@@ -26,8 +26,9 @@ import java.util.List;
 
 public class ChatGroupActivity extends AppCompatActivity {
 
-  // 접근 권한 코드.
-  private static final int REQ_CODE_PERMISSION = 0;
+  // DB 안에서 chat group data 의 path.
+  private final String PATH_DB_GROUP_CHAT = "GROUP_CHAT";
+
   // recycler view 세팅.
   private RecyclerView recyclerView;
   private ChatGroupAdapter adapter;
@@ -35,21 +36,22 @@ public class ChatGroupActivity extends AppCompatActivity {
   private List<ChatGroupData> dataList = new ArrayList<>();
   private String myNick = "chosc"; // 첫번째 단말기의 닉네임.
   private SelectionTracker<Long> selectionTracker;
+
   // xml 컴포넌트 매칭되는 객체.
   //
   // firebase 데이터베이스
-  private FirebaseDatabase chatGroupDb;
+  private FirebaseDatabase db;
   private DatabaseReference chatGroupDbRef;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setupUI();  // ui 설정.
+    setupUi();  // ui 설정.
     setupDb();  // db 설정.
   }
 
   // ui 설정하는 함수.
-  private void setupUI() {
+  private void setupUi() {
     // inflate.
     setContentView(R.layout.activity_chat_group);
 
@@ -67,55 +69,50 @@ public class ChatGroupActivity extends AppCompatActivity {
   // db 설정하는 함수.
   public void setupDb() {
     // 데이터베이스 초기화.
-    chatGroupDb = FirebaseDatabase.getInstance();
-    chatGroupDbRef = chatGroupDb.getReference();
-
+    db = FirebaseDatabase.getInstance();
+    chatGroupDbRef = db.getReference().child(PATH_DB_GROUP_CHAT);
     // 새로운 데이터가 데이터베이스에 저장되었을 때 수행할 동작 지정.
     chatGroupDbRef.addChildEventListener(new ChildEventListener() {
       @Override
       public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-        Log.d("db_group", " - get new group data from DB" +
-            "\nType of Data" + ChatGroupData.class.getSimpleName() +
-            "\nContents of chat : " + snapshot.getValue().toString() +
+        ChatGroupData chatGroup = snapshot.child("dummy").getValue(ChatGroupData.class);
+        Log.d("ChatGroupActivity", " - get new group data from DB" +
+            "\nType of Data : " + chatGroup.getClass().getSimpleName() +
+            "\nGroup ID : " + chatGroup.getChatGroupId() +
             "\n.");
-        ChatGroupData chatGroup = snapshot.getValue(ChatGroupData.class);
         adapter.addChatGroup(chatGroup);
       }
 
       @Override
       public void onChildChanged(@NonNull DataSnapshot snapshot,
           @Nullable String previousChildName) {
-
+        ChatGroupData chatGroup = snapshot.getValue(ChatGroupData.class);
+        Log.d("ChatGroupActivity", " - get changed group data from DB" +
+            "\nType of Data" + chatGroup.getClass().getSimpleName() +
+            "\nGroup ID : " + chatGroup.getChatGroupId() +
+            "\n.");
+        adapter.updateChatGroup(chatGroup);
       }
 
       @Override
       public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
       }
 
       @Override
       public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
       }
 
       @Override
       public void onCancelled(@NonNull DatabaseError error) {
-
       }
     });
+    addDumyGroupIntoDb(); // 더미 데이터 삽입.
   }
 
   // add group 버튼 클릭시 할 행동.
   public void btnAddGroupClickListener(View v) {
     Toast toast = Toast.makeText(this, "btn Add is clicked.", Toast.LENGTH_SHORT);
     toast.show();
-//    String msg = editText_chat.getText().toString();
-//    if (msg != null) {
-//      ChatData chat = new ChatData();
-//      chat.setNickname(myNick);
-//      chat.setMsg(msg);
-//      chatDbRef.push().setValue(chat);
-//    }
   }
 
   // selection 설정하는 함수.
@@ -124,5 +121,12 @@ public class ChatGroupActivity extends AppCompatActivity {
         new StableIdKeyProvider(recyclerView), new ChatDetailsLookUp(recyclerView),
         StorageStrategy.createLongStorage())
         .withSelectionPredicate(SelectionPredicates.createSelectAnything()).build();
+  }
+
+  // 채팅 그룹에 대한 더미 데이터 삽입하는 함수. (테스트용)
+  private void addDumyGroupIntoDb() {
+    ChatGroupData dummyData = ChatGroupData.ChatRoomDataBuilder
+        .aChatRoomData("dummy", "20", null, "dummy_host_id", 20).build();
+    chatGroupDbRef.child("chatGroup").child(dummyData.getChatGroupId()).setValue(dummyData);
   }
 }

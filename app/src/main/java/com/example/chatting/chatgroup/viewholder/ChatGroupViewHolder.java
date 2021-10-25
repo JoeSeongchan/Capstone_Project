@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.selection.ItemDetailsLookup.ItemDetails;
 import androidx.recyclerview.selection.SelectionTracker;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,9 +40,9 @@ public class ChatGroupViewHolder extends RecyclerView.ViewHolder {
   // Representative Picture Source 설정하는 함수.
   private void setRepPicSrc(@DrawableRes int id) {
     // drawable 폴더에서 representative picture 의 bitmap 을 가져온다.
-    BitmapDrawable img = (BitmapDrawable) rootView.getResources()
-        .getDrawable(R.drawable.rep_picture);
-
+    BitmapDrawable img =
+        (BitmapDrawable) ResourcesCompat
+            .getDrawable(rootView.getResources(), R.drawable.rep_picture, null);
     // ImageView 에 이미지 설정.
     ivRepPic.setImageDrawable(img);
   }
@@ -50,9 +51,11 @@ public class ChatGroupViewHolder extends RecyclerView.ViewHolder {
   public void bind(@NonNull ChatGroupData data) {
     setRepPicSrc(R.drawable.rep_picture);
     this.tvGroupTitle.setText(data.getGroupTitle());
-    this.tvRecentMsg.setText(data.getRecentChatData().getMsg());
-    this.tvDate.setText(data.getRecentChatDateTime().toString());
-    this.tvUnReadMsgCount.setText(data.getUnReadMsgCount());
+    Log.d("ChatGroupViewHolder", " - bind" +
+        "\nGroup title : " + data.getChatGroupId());
+    this.tvRecentMsg.setText("0"); //data.getRecentChatData().getMsg()
+    this.tvDate.setText("0"); //data.getRecentChatDateTime().toString()
+    this.tvUnReadMsgCount.setText("0"); //data.getUnReadMsgCount()
     Log.d("vh_group", " - bind view holder in view holder class." +
         "\nType of holder : " + this.getClass().getSimpleName() +
         "\nID of chat group : " + data.getChatGroupId() +

@@ -34,7 +34,7 @@
       android:id="@+id/button_send"
       android:layout_width="80dp"
       android:layout_height="match_parent"
-      android:onClick="button_send_clickListener"
+      android:onClick="btnSendClickListener"
       android:text="전송" />
   </LinearLayout>
 </LinearLayout>

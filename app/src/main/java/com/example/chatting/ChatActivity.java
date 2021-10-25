@@ -2,6 +2,7 @@ package com.example.chatting;
 
 import android.Manifest.permission;
 import android.content.pm.PackageManager;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.selection.SelectionPredicates;
@@ -25,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,12 +136,11 @@ public class ChatActivity extends AppCompatActivity {
   }
 
   // send 버튼 클릭시 할 행동.
-  public void button_send_clickListener(View v) {
+  @RequiresApi(api = VERSION_CODES.O)
+  public void btnSendClickListener(View v) {
     String msg = editText_chat.getText().toString();
     if (msg != null) {
-      ChatData chat = new ChatData();
-      chat.setNickname(myNick);
-      chat.setMsg(msg);
+      ChatData chat = new ChatData(msg, myNick, LocalDateTime.now());
       chatDbRef.push().setValue(chat);
     }
   }
