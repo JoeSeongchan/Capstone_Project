@@ -37,7 +37,7 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> 
   @Override
   public ChatGroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(context).inflate(R.layout.chat_group, parent, false);
-    Log.d("create_vh", "." +
+    Log.d("adapter_group", " - create view holder about chat group." +
         "\nType of holder : " + ChatGroupViewHolder.class.getSimpleName());
     return new ChatGroupViewHolder(view);
   }
@@ -46,7 +46,7 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> 
   @Override
   public void onBindViewHolder(@NonNull ChatGroupViewHolder holder, int position) {
     holder.bind(getData(position));
-    Log.d("adapter__bind_vh", "." +
+    Log.d("adapter_group", " - bind view holder about chat group" +
         "\nType of holder : " + holder.getClass().getSimpleName() +
         "\nID of chat group located in #" + position + " : " + getData(position).getChatGroupId() +
         "\n.");
@@ -77,7 +77,8 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupViewHolder> 
     notifyItemInserted(dataList.size() - 1);
   }
 
-  // Selection 설정하는 함수. (Selection 구현에 사용.)
+  // Selection 구현에 사용.
+  // Selection 설정하는 함수.
   public void setSelectionTracker(final SelectionTracker<Long> selectionTracker) {
     this.selectionTracker = selectionTracker;
   }

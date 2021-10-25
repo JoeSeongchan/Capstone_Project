@@ -24,22 +24,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatRoomActivity extends AppCompatActivity {
+public class ChatGroupActivity extends AppCompatActivity {
 
   // 접근 권한 코드.
   private static final int REQ_CODE_PERMISSION = 0;
   // recycler view 세팅.
   private RecyclerView recyclerView;
-  private ChatGroupAdapter chatRoomAdapter;
+  private ChatGroupAdapter adapter;
   private RecyclerView.LayoutManager layoutManager;
-  private List<ChatGroupData> chatRoomDataList = new ArrayList<>();
+  private List<ChatGroupData> dataList = new ArrayList<>();
   private String myNick = "chosc"; // 첫번째 단말기의 닉네임.
   private SelectionTracker<Long> selectionTracker;
   // xml 컴포넌트 매칭되는 객체.
   //
   // firebase 데이터베이스
-  private FirebaseDatabase chatRoomDb;
-  private DatabaseReference chatRoomDbRef;
+  private FirebaseDatabase chatGroupDb;
+  private DatabaseReference chatGroupDbRef;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -51,35 +51,35 @@ public class ChatRoomActivity extends AppCompatActivity {
   // ui 설정하는 함수.
   private void setupUI() {
     // inflate.
-    setContentView(R.layout.activity_chat_room);
+    setContentView(R.layout.activity_chat_group);
 
     // recycler view 세팅.
     recyclerView = findViewById(R.id.recyclerView);
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
 
-    chatRoomAdapter = new ChatGroupAdapter(chatRoomDataList, this);
-    recyclerView.setAdapter(chatRoomAdapter);
+    adapter = new ChatGroupAdapter(dataList, this);
+    recyclerView.setAdapter(adapter);
     setupSelectionTracker();
-    chatRoomAdapter.setSelectionTracker(selectionTracker);
+    adapter.setSelectionTracker(selectionTracker);
   }
 
   // db 설정하는 함수.
   public void setupDb() {
     // 데이터베이스 초기화.
-    chatRoomDb = FirebaseDatabase.getInstance();
-    chatRoomDbRef = chatRoomDb.getReference();
+    chatGroupDb = FirebaseDatabase.getInstance();
+    chatGroupDbRef = chatGroupDb.getReference();
 
-    // 데이터베이스 데이터 입력 시 동작 지정.
-    chatRoomDbRef.addChildEventListener(new ChildEventListener() {
+    // 새로운 데이터가 데이터베이스에 저장되었을 때 수행할 동작 지정.
+    chatGroupDbRef.addChildEventListener(new ChildEventListener() {
       @Override
       public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-        Log.d("ChatRoom", "setupDb : Add new chat" +
+        Log.d("db_group", " - get new group data from DB" +
             "\nType of Data" + ChatGroupData.class.getSimpleName() +
             "\nContents of chat : " + snapshot.getValue().toString() +
             "\n.");
-        ChatGroupData chatRoom = snapshot.getValue(ChatGroupData.class);
-        chatRoomAdapter.addChatRoom(chatRoom);
+        ChatGroupData chatGroup = snapshot.getValue(ChatGroupData.class);
+        adapter.addChatGroup(chatGroup);
       }
 
       @Override
@@ -105,8 +105,8 @@ public class ChatRoomActivity extends AppCompatActivity {
     });
   }
 
-  // send 버튼 클릭시 할 행동.
-  public void btnAddClickListener(View v) {
+  // add group 버튼 클릭시 할 행동.
+  public void btnAddGroupClickListener(View v) {
     Toast toast = Toast.makeText(this, "btn Add is clicked.", Toast.LENGTH_SHORT);
     toast.show();
 //    String msg = editText_chat.getText().toString();

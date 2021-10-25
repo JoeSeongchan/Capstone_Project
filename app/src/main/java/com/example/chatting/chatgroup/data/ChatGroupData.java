@@ -1,21 +1,17 @@
 package com.example.chatting.chatgroup.data;
 
+import com.example.chatting.R;
 import com.example.chatting.chat.data.ChatData;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ChatGroupData implements Serializable {
 
-  // (ID, 제목, 대표 사진, 가장 최근에 올라온 채팅 내용, recent 한 채팅 올라온 날짜/시간, 아직 읽지 않은 메시지 수 )
-  // chat group view 에 표시될 데이터.
   private String chatGroupId;
   private String groupTitle;
-  private String repPicSourceUri;
-  private ChatData recentChatData;
-  private LocalDateTime dateTimeOfRecentChat;
-  private int unReadMsgCount;
-
-  // (호스트 유저 ID, 최대 인원 수, 현재 인원 수, 모임 시작 날짜/시간, 모임 종료 날짜/시간, 노래방 ID)
+  private int repPicSourceUri;
+  private List<ChatData> chatDataList;
   private String hostUserId;
   private int maxUserNum;
   private int curUserNum;
@@ -23,9 +19,12 @@ public class ChatGroupData implements Serializable {
   private LocalDateTime endDateTime;
   private String karaokeId;
 
+  private ChatData recentChatData;
+  private LocalDateTime recentChatDateTime;
+  private int unReadMsgCount;
+
+
   // Getter
-
-
   public String getChatGroupId() {
     return chatGroupId;
   }
@@ -34,20 +33,12 @@ public class ChatGroupData implements Serializable {
     return groupTitle;
   }
 
-  public String getRepPicSourceUri() {
+  public int getRepPicSourceUri() {
     return repPicSourceUri;
   }
 
-  public ChatData getRecentChatData() {
-    return recentChatData;
-  }
-
-  public LocalDateTime getDateTimeOfRecentChat() {
-    return dateTimeOfRecentChat;
-  }
-
-  public int getUnReadMsgCount() {
-    return unReadMsgCount;
+  public List<ChatData> getChatDataList() {
+    return chatDataList;
   }
 
   public String getHostUserId() {
@@ -74,51 +65,80 @@ public class ChatGroupData implements Serializable {
     return karaokeId;
   }
 
+  public ChatData getRecentChatData() {
+    return recentChatData;
+  }
+
+  public LocalDateTime getRecentChatDateTime() {
+    return recentChatDateTime;
+  }
+
+  public int getUnReadMsgCount() {
+    return unReadMsgCount;
+  }
+
+  // update 함수.
+  // chat data list 내용물 변경 시 호출할 함수.
+  public void update() {
+    recentChatData = chatDataList.get(chatDataList.size() - 1);
+    recentChatDateTime = recentChatData.getDateTime();
+    unReadMsgCount++;
+  }
+
   // Builder 패턴 사용.
   public static final class ChatRoomDataBuilder {
 
     // final 필드 : 필수 필드.
     // final 아닌 필드 : 필수 아닌 필드.
-    private String chatGroupId;
-    private String groupTitle;
-    private String repPicSourceUri;
-    private ChatData recentChatData;
-    private LocalDateTime dateTimeOfRecentChat;
-    private int unReadMsgCount;
-    private String hostUserId;
-    private int maxUserNum;
-    private int curUserNum;
-    private LocalDateTime startDateTime;
-    private LocalDateTime endDateTime;
-    private String karaokeId;
+    private final String chatGroupId;
+    private final String groupTitle;
+    private final List<ChatData> chatDataList;
+    private final String hostUserId;
+    private final int maxUserNum;
+    private int repPicSourceUri = R.drawable.rep_picture;
+    private int curUserNum = 0;
+    private LocalDateTime startDateTime = null;
+    private LocalDateTime endDateTime = null;
+    private String karaokeId = null;
 
-    private ChatRoomDataBuilder(final String chatGroupId,
+    private ChatRoomDataBuilder(
+        final String chatGroupId,
+        final String groupTitle,
+        final List<ChatData> chatDataList,
         final String hostUserId,
-        final int maxUserNum,
-        final int curUserNum,
-        final LocalDateTime startDateTime) {
+        final int maxUserNum) {
       this.chatGroupId = chatGroupId;
+      this.groupTitle = groupTitle;
+      this.chatDataList = chatDataList;
       this.hostUserId = hostUserId;
       this.maxUserNum = maxUserNum;
-      this.curUserNum = curUserNum;
-      this.startDateTime = startDateTime;
     }
 
     public static ChatRoomDataBuilder aChatRoomData(
         final String chatGroupId,
+        final String groupTitle,
+        final List<ChatData> chatDataList,
         final String hostUserId,
-        final int maxUserNum,
-        final int curUserNum,
-        final LocalDateTime startDateTimes) {
+        final int maxUserNum) {
       return new ChatRoomDataBuilder(chatGroupId,
+          groupTitle,
+          chatDataList,
           hostUserId,
-          maxUserNum,
-          curUserNum,
-          startDateTimes);
+          maxUserNum);
     }
 
-    public ChatRoomDataBuilder withRepresentativePicture(String representativePicture) {
-      this.representativePicture = representativePicture;
+    public ChatRoomDataBuilder withRepPicSourceUri(int repPicSourceUri) {
+      this.repPicSourceUri = repPicSourceUri;
+      return this;
+    }
+
+    public ChatRoomDataBuilder withCurUserNum(int curUserNum) {
+      this.curUserNum = curUserNum;
+      return this;
+    }
+
+    public ChatRoomDataBuilder withStartDateTime(LocalDateTime startDateTime) {
+      this.startDateTime = startDateTime;
       return this;
     }
 
@@ -132,17 +152,20 @@ public class ChatGroupData implements Serializable {
       return this;
     }
 
+
     public ChatGroupData build() {
-      ChatGroupData chatRoomData = new ChatGroupData();
-      chatRoomData.endDateTime = this.endDateTime;
-      chatRoomData.karaokeId = this.karaokeId;
-      chatRoomData.curUserNum = this.curUserNum;
-      chatRoomData.maxUserNum = this.maxUserNum;
-      chatRoomData.chatGroupId = this.chatGroupId;
-      chatRoomData.hostUserId = this.hostUserId;
-      chatRoomData.startDateTime = this.startDateTime;
-      chatRoomData.representativePicture = this.representativePicture;
-      return chatRoomData;
+      ChatGroupData chatGroupData = new ChatGroupData();
+      chatGroupData.chatGroupId = this.chatGroupId;
+      chatGroupData.groupTitle = this.groupTitle;
+      chatGroupData.repPicSourceUri = this.repPicSourceUri;
+      chatGroupData.chatDataList = this.chatDataList;
+      chatGroupData.hostUserId = this.hostUserId;
+      chatGroupData.maxUserNum = this.maxUserNum;
+      chatGroupData.curUserNum = this.curUserNum;
+      chatGroupData.startDateTime = this.startDateTime;
+      chatGroupData.endDateTime = this.endDateTime;
+      chatGroupData.karaokeId = this.karaokeId;
+      return chatGroupData;
     }
   }
 }

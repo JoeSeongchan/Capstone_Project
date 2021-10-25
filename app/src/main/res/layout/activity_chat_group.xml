@@ -7,7 +7,7 @@
   android:orientation="vertical"
   android:weightSum="1"
   android:background="@color/chatRoomBackground"
-  tools:context=".ChatRoomActivity">
+  tools:context=".ChatGroupActivity">
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
@@ -21,7 +21,7 @@
       android:id="@+id/button_send"
       android:layout_width="80dp"
       android:layout_height="match_parent"
-      android:onClick="btnAddClickListener"
+      android:onClick="btnAddGroupClickListener"
       app:layout_constraintRight_toRightOf="parent"
       android:layout_marginRight="10dp"
       android:text="@string/btnAddStr"
