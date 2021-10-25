@@ -52,7 +52,6 @@
       android:text="전체보기"
       android:textColor="@color/blackTextColor"
       android:textSize="10sp"
-      android:onClick="showFullChatText"
       />
   </LinearLayout>
 

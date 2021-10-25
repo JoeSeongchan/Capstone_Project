@@ -9,13 +9,13 @@ import com.example.chatting.chat.viewholder.ChatViewHolder;
 
 public abstract class EllipsedChatViewHolder extends ChatViewHolder {
 
-  private Button fullTextButton = null;
-  private String msg_fullText = null;
-  private String msg_ellipsedText = null;
+  private Button btnFullText = null;
+  private String msgFullText = null;
+  private String msgEllipsedText = null;
 
   public EllipsedChatViewHolder(View v) {
     super(v);
-    fullTextButton = v.findViewById(R.id.button_fullTextButton);
+    btnFullText = v.findViewById(R.id.button_fullTextButton);
   }
 
   // ellipsed text 구하는 함수.
@@ -23,16 +23,22 @@ public abstract class EllipsedChatViewHolder extends ChatViewHolder {
     return msgFullText.substring(0, 29) + "...생략.";
   }
 
-  public int getMsgLineCount() {
+  public String getMsgfullText() {
+    return msgFullText;
+  }
 
+  public void setBtnFullTextClickListener(View.OnClickListener clickListener) {
+    btnFullText.setOnClickListener(clickListener);
   }
 
   // ellipsed chat view holder 데이터 설정하는 함수.
   @Override
   public void bind(@NonNull ChatData chatData) {
     this.textView_nickname.setText(chatData.getNickname());
-    msg_fullText = chatData.getMsg();
-    msg_ellipsedText = getEllipsedText(msg_fullText);
-    this.textView_msg.setText(msg_ellipsedText);
+    msgFullText = chatData.getMsg();
+    msgEllipsedText = getEllipsedText(msgFullText);
+    this.textView_msg.setText(msgEllipsedText);
+//    Log.d("ellipsed_bind",
+//        "\nmsgFullText :" + msgFullText + "\nmsgEllipsedText " + msgEllipsedText);
   }
 }

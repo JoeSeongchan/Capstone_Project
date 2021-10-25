@@ -50,7 +50,6 @@
       android:text="전체보기"
       android:textColor="@color/chat_gray_color"
       android:textSize="10sp"
-      android:onClick="showFullChatText"
       />
   </LinearLayout>
 

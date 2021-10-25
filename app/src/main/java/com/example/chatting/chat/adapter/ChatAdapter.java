@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.selection.SelectionTracker;
@@ -12,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.chatting.R;
 import com.example.chatting.chat.data.ChatData;
 import com.example.chatting.chat.viewholder.ChatViewHolder;
+import com.example.chatting.chat.viewholder.ellipsed.EllipsedChatViewHolder;
 import com.example.chatting.chat.viewholder.ellipsed.MyEllipsedChatViewHolder;
 import com.example.chatting.chat.viewholder.ellipsed.YourEllipsedChatViewHolder;
 import com.example.chatting.chat.viewholder.noellipsed.MyChatViewHolder;
+import com.example.chatting.chat.viewholder.noellipsed.NoEllipsedChatViewHolder;
 import com.example.chatting.chat.viewholder.noellipsed.YourChatViewHolder;
 import java.util.List;
 
@@ -88,34 +91,46 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatViewHolder> {
   // chat view holder 의 내용 수정하는 함수. (layout manager 에 의해 호출.)
   @Override
   public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-    if (holder instanceof MyChatViewHolder) {
-      ((MyChatViewHolder) holder).bind(dataList.get(position));
-      Log.d("Bind_view_holder", "My chat" +
-          "\nType of holder : " + holder.getClass().getName() +
-          "\nType of data located in #" + position + " : " + getItemViewType(position) +
-          "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
-          "\n.");
-    } else if (holder instanceof YourChatViewHolder) {
-      ((YourChatViewHolder) holder).bind(dataList.get(position));
-      Log.d("Bind_view_holder", "Your chat" +
-          "\nType of holder : " + holder.getClass().getName() +
-          "\nType of data located in #" + position + " : " + getItemViewType(position) +
-          "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
-          "\n.");
-    } else if (holder instanceof MyEllipsedChatViewHolder) {
-      ((MyEllipsedChatViewHolder) holder).bind(dataList.get(position));
-      Log.d("Bind_view_holder", "My ellipsed chat" +
-          "\nType of holder : " + holder.getClass().getName() +
-          "\nType of data located in #" + position + " : " + getItemViewType(position) +
-          "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
-          "\n.");
-    } else if (holder instanceof YourEllipsedChatViewHolder) {
-      ((YourEllipsedChatViewHolder) holder).bind(dataList.get(position));
-      Log.d("Bind_view_holder", "Your ellipsed chat" +
-          "\nType of holder : " + holder.getClass().getName() +
-          "\nType of data located in #" + position + " : " + getItemViewType(position) +
-          "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
-          "\n.");
+    if (holder instanceof NoEllipsedChatViewHolder) {
+      if (holder instanceof MyChatViewHolder) {
+        ((MyChatViewHolder) holder).bind(dataList.get(position));
+        Log.d("Bind_view_holder", "My chat" +
+            "\nType of holder : " + holder.getClass().getName() +
+            "\nType of data located in #" + position + " : " + getItemViewType(position) +
+            "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
+            "\n.");
+      } else if (holder instanceof YourChatViewHolder) {
+        ((YourChatViewHolder) holder).bind(dataList.get(position));
+        Log.d("Bind_view_holder", "Your chat" +
+            "\nType of holder : " + holder.getClass().getName() +
+            "\nType of data located in #" + position + " : " + getItemViewType(position) +
+            "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg() +
+            "\n.");
+      }
+    } else if (holder instanceof EllipsedChatViewHolder) {
+      EllipsedChatViewHolder ellipsedChatViewHolder = (EllipsedChatViewHolder) holder;
+      ellipsedChatViewHolder.setBtnFullTextClickListener(view -> {
+        Toast toast = Toast
+            .makeText(this.context, ellipsedChatViewHolder.getMsgfullText(), Toast.LENGTH_LONG);
+        toast.show();
+      });
+      if (holder instanceof MyEllipsedChatViewHolder) {
+        ((MyEllipsedChatViewHolder) holder).bind(dataList.get(position));
+        Log.d("Bind_view_holder", "My ellipsed chat" +
+            "\nType of holder : " + holder.getClass().getName() +
+            "\nType of data located in #" + position + " : " + getItemViewType(position) +
+            "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg()
+            +
+            "\n.");
+      } else if (holder instanceof YourEllipsedChatViewHolder) {
+        ((YourEllipsedChatViewHolder) holder).bind(dataList.get(position));
+        Log.d("Bind_view_holder", "Your ellipsed chat" +
+            "\nType of holder : " + holder.getClass().getName() +
+            "\nType of data located in #" + position + " : " + getItemViewType(position) +
+            "\nContents of data located in #" + position + " : " + dataList.get(position).getMsg()
+            +
+            "\n.");
+      }
     }
     setMsgViewWidthLimit(holder, dataList.get(position).getMsg().length());
     holder.setSelectionTracker(selectionTracker);
