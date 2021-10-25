@@ -4,5 +4,6 @@
   <dimen name="max_chat_width">30dp</dimen>
   <string name="app_name">Chatting</string>
   <string name="full_chattext_default">default string value</string>
+  <string name="btnAddStr">추가</string>
 
 </resources>
