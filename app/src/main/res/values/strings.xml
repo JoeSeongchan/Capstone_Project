@@ -2,8 +2,13 @@
   <dimen name="app_head_text_size">10sp</dimen>
   <dimen name="chat_msg_text_size">20sp</dimen>
   <dimen name="max_chat_width">30dp</dimen>
-  <string name="app_name">Chatting</string>
+  <string name="app_name">ChatVer4</string>
   <string name="full_chattext_default">default string value</string>
   <string name="btnAddStr">추가</string>
-
+  <string name="sign_up">Sign up</string>
+  <string name="login">Login</string>
+  <string name="default_login_id">CHOSC</string>
+  <string name="default_pwd">PWD</string>
+  <string name="id_label">ID</string>
+  <string name="pwd_label">PWD</string>
 </resources>

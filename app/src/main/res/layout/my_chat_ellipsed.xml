@@ -7,7 +7,7 @@
   android:layout_marginRight="10dp"
   android:orientation="vertical">
   <TextView
-    android:id="@+id/textView_nickname"
+    android:id="@+id/tv_nickname"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginRight="5dp"
@@ -22,7 +22,7 @@
     android:background="@drawable/bubble_right_tail"
     android:orientation="vertical">
     <TextView
-      android:id="@+id/textView_msg"
+      android:id="@+id/tv_msg"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_gravity="right"
@@ -38,7 +38,7 @@
       android:textColor="@color/whiteTextColor"
       android:textSize="20sp" />
     <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/button_fullTextButton"
+      android:id="@+id/btn_fullTextButton"
       android:textStyle="bold"
       android:layout_width="match_parent"
       android:layout_height="12sp"

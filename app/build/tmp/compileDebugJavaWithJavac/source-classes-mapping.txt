@@ -1,0 +1,63 @@
+com/android/chatver4/db/dbdata/Data.java
+ com.android.chatver4.db.dbdata.Data
+com/android/chatver4/chat/viewholder/ellipsed/MyEllipsedChatViewHolder.java
+ com.android.chatver4.chat.viewholder.ellipsed.MyEllipsedChatViewHolder
+com/android/chatver4/chat/viewholder/noellipsed/YourChatViewHolder.java
+ com.android.chatver4.chat.viewholder.noellipsed.YourChatViewHolder
+com/android/chatver4/activity/MainActivity.java
+ com.android.chatver4.activity.MainActivity
+com/android/chatver4/parentadapter/ParentAdapter.java
+ com.android.chatver4.parentadapter.ParentAdapter
+com/android/chatver4/chat/adapter/ChatAdapter.java
+ com.android.chatver4.chat.adapter.ChatAdapter
+com/android/chatver4/db/change/DbChanges.java
+ com.android.chatver4.db.change.DbChanges
+ com.android.chatver4.db.change.DbChanges$DbChangesType
+com/android/chatver4/db/dbdata/SampleData.java
+ com.android.chatver4.db.dbdata.SampleData
+com/android/chatver4/activity/LoginActivity.java
+ com.android.chatver4.activity.LoginActivity
+com/android/chatver4/chat/viewholder/ellipsed/EllipsedChatViewHolder.java
+ com.android.chatver4.chat.viewholder.ellipsed.EllipsedChatViewHolder
+com/android/chatver4/chat/viewholder/ellipsed/YourEllipsedChatViewHolder.java
+ com.android.chatver4.chat.viewholder.ellipsed.YourEllipsedChatViewHolder
+com/android/chatver4/chatgroup/viewholder/ChatGroupViewHolder.java
+ com.android.chatver4.chatgroup.viewholder.ChatGroupViewHolder
+com/android/chatver4/event/listener/OnMyChatSentEventListener.java
+ com.android.chatver4.event.listener.OnMyChatSentEventListener
+com/android/chatver4/BuildConfig.java
+ com.android.chatver4.BuildConfig
+com/android/chatver4/chatgroup/data/ChatGroupForView.java
+ com.android.chatver4.chatgroup.data.ChatGroupForView
+com/android/chatver4/chatgroup/data/ChatGroup.java
+ com.android.chatver4.chatgroup.data.ChatGroup
+com/android/chatver4/chat/viewholder/noellipsed/MyChatViewHolder.java
+ com.android.chatver4.chat.viewholder.noellipsed.MyChatViewHolder
+com/android/chatver4/user/User.java
+ com.android.chatver4.user.User
+com/android/chatver4/parentholder/ParentViewHolder.java
+ com.android.chatver4.parentholder.ParentViewHolder
+com/android/chatver4/chat/viewholder/ChatViewHolder.java
+ com.android.chatver4.chat.viewholder.ChatViewHolder
+com/android/chatver4/activity/ChatGroupActivity.java
+ com.android.chatver4.activity.ChatGroupActivity
+ com.android.chatver4.activity.ChatGroupActivity$1
+com/android/chatver4/event/MyChatSentEvent.java
+ com.android.chatver4.event.MyChatSentEvent
+com/android/chatver4/activity/ChatActivity.java
+ com.android.chatver4.activity.ChatActivity
+ com.android.chatver4.activity.ChatActivity$1
+com/android/chatver4/chat/data/Chat.java
+ com.android.chatver4.chat.data.Chat
+com/android/chatver4/chat/viewholder/noellipsed/NoEllipsedChatViewHolder.java
+ com.android.chatver4.chat.viewholder.noellipsed.NoEllipsedChatViewHolder
+com/android/chatver4/chatgroup/adapter/ChatGroupAdapter.java
+ com.android.chatver4.chatgroup.adapter.ChatGroupAdapter
+com/android/chatver4/db/Db.java
+ com.android.chatver4.db.Db
+ com.android.chatver4.db.Db$1
+com/android/chatver4/utilities/Utilities.java
+ com.android.chatver4.utilities.Utilities
+com/android/chatver4/db/variousdb/ChatDb.java
+ com.android.chatver4.db.variousdb.ChatDb
+ com.android.chatver4.db.variousdb.ChatDb$1
