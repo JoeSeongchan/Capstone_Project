@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/clRegister"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/chatRoomBackground"
+  android:weightSum="1"
+  tools:context=".activity.RegisterActivity">
+  <!--회원가입 title.-->
+  <TextView
+    android:id="@+id/tvTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/def_register_title"
+    android:textSize="50sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.1" />
+
+  <ScrollView
+    android:id="@+id/svInfo"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginBottom="120dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+    <LinearLayout style="@style/ll_allItem_register">
+
+      <!--이름.-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvName"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_name" />
+        <!--입력창.-->
+        <EditText
+          android:id="@+id/etName"
+          style="@style/et_oneItemInput_register"
+          android:hint="@string/hint_name"
+          android:text="@string/def_name" />
+      </LinearLayout>
+      <!--닉네임-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvNick"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_nick" />
+        <!--입력창.-->
+        <EditText
+          android:id="@+id/etNick"
+          style="@style/et_oneItemInput_register"
+          android:hint="@string/hint_nick"
+          android:text="@string/def_nick" />
+      </LinearLayout>
+      <!--이메일-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvEmail"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_email" />
+        <!--입력창.-->
+        <EditText
+          android:id="@+id/etEmail"
+          style="@style/et_oneItemInput_register"
+          android:hint="@string/hint_email"
+          android:inputType="textEmailAddress"
+          android:text="@string/def_email" />
+      </LinearLayout>
+      <!--생년월일-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvBirth"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_birth" />
+        <!--표시.-->
+        <TextView
+          android:id="@+id/tvBirthInput"
+          style="@style/tv_oneItemInput_register"
+          android:text="@string/inputBirth"
+          android:textColor="@color/blackTextColor" />
+      </LinearLayout>
+      <!--전화번호-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvPhone"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_phone" />
+        <!--입력창.-->
+        <EditText
+          android:id="@+id/etPhone"
+          style="@style/et_oneItemInput_register"
+          android:hint="@string/hint_pwd"
+          android:inputType="phone"
+          android:text="@string/def_phone" />
+      </LinearLayout>
+      <!--비밀번호-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvPwd"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_pwd" />
+        <!--입력창.-->
+        <EditText
+          android:id="@+id/etPwd"
+          style="@style/et_oneItemInput_register"
+          android:hint="@string/hint_pwd"
+          android:inputType="textPassword"
+          android:text="@string/def_pwd" />
+      </LinearLayout>
+      <!--비밀번호 확인-->
+      <LinearLayout style="@style/ll_oneItem_register">
+        <!--제목.-->
+        <TextView
+          android:id="@+id/tvPwdCheck"
+          style="@style/tv_oneItemTitle_register"
+          android:text="@string/tv_pwd_check" />
+        <!--입력창.-->
+        <EditText
+          android:id="@+id/etPwdCheck"
+          style="@style/et_oneItemInput_register"
+          android:hint="@string/hint_pwd_check"
+          android:inputType="textPassword"
+          android:text="@string/def_pwd" />
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+
+  <androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/btnRegister"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="@string/btn_register"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/svInfo" />
+</androidx.constraintlayout.widget.ConstraintLayout>

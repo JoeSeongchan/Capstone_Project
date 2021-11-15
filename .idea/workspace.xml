@@ -5,36 +5,8 @@
       <filter>
         <option name="logLevel" value="verbose" />
         <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="LoginActivity_R" />
-        <option name="name" value="LoginActivity_R" />
-        <option name="packageNamePattern" value="" />
-      </filter>
-      <filter>
-        <option name="logLevel" value="verbose" />
-        <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="UserDataDb_R" />
-        <option name="name" value="UserDataDb_R" />
-        <option name="packageNamePattern" value="" />
-      </filter>
-      <filter>
-        <option name="logLevel" value="verbose" />
-        <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="ChatGroupAdapter_R" />
-        <option name="name" value="ChatGroupAdapter_R" />
-        <option name="packageNamePattern" value="" />
-      </filter>
-      <filter>
-        <option name="logLevel" value="verbose" />
-        <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="ChatGroupActivity_R" />
-        <option name="name" value="ChatGroupActivity_R" />
-        <option name="packageNamePattern" value="" />
-      </filter>
-      <filter>
-        <option name="logLevel" value="verbose" />
-        <option name="logMessagePattern" value="" />
-        <option name="logTagPattern" value="CGDFV_R" />
-        <option name="name" value="CGDFV_R" />
+        <option name="logTagPattern" value="_R" />
+        <option name="name" value="_R" />
         <option name="packageNamePattern" value="" />
       </filter>
     </filters>
@@ -51,45 +23,86 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b77632e-203e-44b6-ba4b-d087b7b295a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/activity/ChatActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/adapter/ChatAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/data/Chat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/ChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/ellipsed/EllipsedChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/ellipsed/MyEllipsedChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/ellipsed/YourEllipsedChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/noellipsed/MyChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/noellipsed/NoEllipsedChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/chat/viewholder/noellipsed/YourChatViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/db/variousdb/ChatDb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/event/MyChatSentEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/event/listener/OnMyChatSentEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/parentadapter/ParentAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/parentholder/ParentViewHolder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bubble_left.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bubble_left_tail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bubble_right.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bubble_right_tail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/bold_font.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nanum_barun_gothic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nanum_barun_gothic_bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nanum_barun_gothic_light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/nanum_barun_gothic_ultra_light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/normal_font.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_chat.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_chat_ellipsed.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/your_chat.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/your_chat_ellipsed.xml" afterDir="false" />
+    <list default="true" id="e785b898-91c5-49b9-969d-6c10dec39d41" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/ic_launcher-playstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/activity/LoginActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/activity/RegisterActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ChatBindable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ChatUtilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/app_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/app_icon_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/google_favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/login_styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/register_styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/activity/ChatGroupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/activity/ChatGroupActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/activity/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/db/Db.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver4/db/Db.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/android/chatver4/db/DbTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/activity/ChatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/activity/ChatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/activity/ChatGroupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/activity/ChatGroupActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/briefchatgroup/adapter/BriefChatGroupAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/briefchatgroup/adapter/BriefChatGroupAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/briefchatgroup/viewholder/BriefChatGroupViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/briefchatgroup/viewholder/BriefChatGroupViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/adapter/ChatAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/adapter/ChatAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ChatViewHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ellipsed/EllipsedChatViewHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ellipsed/MyEllipsedChatViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ellipsed/MyEllipsedChatViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ellipsed/YourEllipsedChatViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/ellipsed/YourEllipsedChatViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/noellipsed/MyChatViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/noellipsed/MyChatViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/noellipsed/NoEllipsedChatViewHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/noellipsed/YourChatViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/chat/viewholder/noellipsed/YourChatViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/BriefChatGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/BriefChatGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/TypeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/data/TypeConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/firedb/Db.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/firedb/Db.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/firedbmanager/ChatDbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/firedbmanager/ChatDbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/firedbmanager/ChatGroupDbManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/firedbmanager/ChatGroupDbManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/roomdb/dao/BriefChatGroupDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/roomdb/dao/BriefChatGroupDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/roomdb/dao/ChatDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/roomdb/dao/ChatDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/roomdb/repo/BriefChatGroupRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/chatver5/db/roomdb/repo/BriefChatGroupRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chat_group.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/chat_group.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_chat_ellipsed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_chat_ellipsed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/your_chat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/your_chat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/your_chat_ellipsed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/your_chat_ellipsed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,16 +112,27 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\heyjo\.android\avd\Pixel_2_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R3CM609RFRR]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
+        <option value="valueResourceFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -124,7 +148,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProjectId" id="20YUgxv0cD4moGWtZfAfOsXjWdz" />
+  <component name="ProjectId" id="20lMBehCXSo6zCF2cOcQVRNo7Dg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -136,40 +160,36 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android-custom-viewC:/Users/heyjo/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
-    <property name="android-custom-viewC:/Users/heyjo/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/test/java/com/android/chatver4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\heyjo\AndroidStudioProjects\ChatVer4\app\src\main\res" />
-      <recent name="C:\Users\heyjo\AndroidStudioProjects\ChatVer4\app\src\main\res\layout" />
-      <recent name="C:\Users\heyjo\AndroidStudioProjects\ChatVer4\app\src\main\res\drawable" />
-      <recent name="C:\Users\heyjo\AndroidStudioProjects\ChatVer4\app\src\main\java\com\android\chatver4" />
+      <recent name="C:\gitkraken_project\ChatVer5\app\src\main\res\drawable-v24" />
+      <recent name="C:\gitkraken_project\ChatVer5\app\src\main\res" />
+      <recent name="C:\gitkraken_project\ChatVer5\app" />
+      <recent name="C:\gitkraken_project\ChatVer5\app\src\main\res\values" />
+      <recent name="C:\gitkraken_project\ChatVer5\app\src\main\res\layout" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\gitkraken_project\ChatVer5\app\src\main\res\drawable" />
+      <recent name="C:\gitkraken_project\ChatVer5\app\src\main\java\com\android\chatver5\" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.android.chatver4" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.android.chatver4.db" />
+      <recent name="com.android.chatver5" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.android.chatver4.activity" />
-      <recent name="com.android.chatver4.db.dbdata" />
-      <recent name="com.android.chatver4" />
-      <recent name="com.android.chatver4.utilities" />
+      <recent name="com.android.chatver5.chat.viewholder.noellipsed" />
+      <recent name="com.android.chatver5.chat.viewholder.ellipsed" />
+      <recent name="com.android.chatver5.db.data" />
+      <recent name="com.android.chatver5.activity" />
+      <recent name="com.android.chatver5.db.firedbmanager" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="ChatVer4.app" />
+      <module name="ChatVer5.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -226,42 +246,36 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DbTest.addData" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ChatVer5 [signingReport]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.android.chatver4.db.DbTest.addData&quot;" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":app:cleanTestDebugUnitTest" />
-            <option value=":app:testDebugUnitTest" />
+            <option value="signingReport" />
           </list>
         </option>
-        <option name="vmOptions" />
+        <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.DbTest.addData" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3b77632e-203e-44b6-ba4b-d087b7b295a1" name="Default Changelist" comment="" />
-      <created>1636221131211</created>
+      <changelist id="e785b898-91c5-49b9-969d-6c10dec39d41" name="Default Changelist" comment="" />
+      <created>1636614588313</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1636221131211</updated>
+      <updated>1636614588313</updated>
     </task>
     <servers />
   </component>

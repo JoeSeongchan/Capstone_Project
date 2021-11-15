@@ -2,81 +2,95 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/clRegister"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".activity.LoginActivity">
-
+  android:background="@color/chatRoomBackground"
+  tools:context=".activity.RegisterActivity">
+  <!--회원가입 title.-->
   <TextView
-    android:id="@+id/tvIdLabel"
+    android:id="@+id/tvLoginTitle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="120dp"
-    android:layout_marginStart="60dp"
-    android:paddingTop="5dp"
-    android:text="@string/id_label"
-    android:textSize="25sp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    android:text="@string/tv_login_title"
+    android:textSize="50sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.1" />
 
-  <EditText
-    android:id="@+id/etId"
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:id="@+id/ll_allItem_login"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="text"
-    android:minHeight="48dp"
-    android:text="@string/default_login_id"
-    android:layout_marginStart="10dp"
-    app:layout_constraintLeft_toRightOf="@id/tvIdLabel"
-    app:layout_constraintTop_toTopOf="@id/tvIdLabel" />
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/tvPwdLabel"
-    android:text="@string/pwd_label"
-    app:layout_constraintTop_toBottomOf="@id/tvIdLabel"
-    app:layout_constraintRight_toRightOf="@id/tvIdLabel"
+    android:layout_marginHorizontal="30dp"
     android:layout_marginTop="50dp"
-    android:textSize="25sp"
-    android:paddingTop="5dp"
-    />
-
-  <EditText
-    android:id="@+id/etPwd"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="text"
-    android:minHeight="48dp"
-    android:text="@string/default_pwd"
-    android:layout_marginStart="10dp"
-    app:layout_constraintLeft_toRightOf="@id/tvPwdLabel"
-    app:layout_constraintTop_toTopOf="@id/tvPwdLabel" />
-
+    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvLoginTitle">
+    <!--이메일-->
+    <LinearLayout style="@style/ll_oneItem_login">
+      <!--제목.-->
+      <TextView
+        android:id="@+id/tv_email_login"
+        style="@style/tv_oneItemTitle_login"
+        android:text="@string/tv_email_login" />
+      <!--입력창.-->
+      <EditText
+        android:id="@+id/et_email_login"
+        style="@style/et_oneItemInput_login"
+        android:text="@string/et_email_login" />
+    </LinearLayout>
+    <!--비밀번호-->
+    <LinearLayout style="@style/ll_oneItem_login">
+      <!--제목.-->
+      <TextView
+        android:id="@+id/tv_pwd_login"
+        style="@style/tv_oneItemTitle_login"
+        android:text="@string/tv_pwd_login" />
+      <!--입력창.-->
+      <EditText
+        android:id="@+id/et_pwd_login"
+        style="@style/et_oneItemInput_login"
+        android:inputType="textPassword"
+        android:text="@string/et_pwd_login" />
+    </LinearLayout>
+  </LinearLayout>
+  <!--일반 로그인 버튼-->
   <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/btnLogin"
+    android:id="@+id/btn_login_login"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/login"
-    app:layout_constraintTop_toBottomOf="@id/etPwd"
-    android:layout_marginTop="50dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintVertical_bias="0.5"
-    android:textAllCaps="false"
-    android:onClick="login"/>
+    android:layout_marginTop="30dp"
+    android:text="@string/btn_login_login"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/ll_allItem_login" />
 
-  <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/btnSignUp"
+  <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/sign_up"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintTop_toBottomOf="@id/btnLogin"
-    android:layout_marginTop="20dp"
-    android:textAllCaps="false"
-    android:onClick="signUp"/>
+    android:orientation="horizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/btn_login_login">
+
+    <TextView
+      android:id="@+id/tv_registerQuestion_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:text="@string/tv_registerQuestion_login" />
+
+    <TextView
+      android:id="@+id/tv_register_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:text="@string/tv_register_login"
+      android:textColor="@android:color/holo_red_light" />
+  </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

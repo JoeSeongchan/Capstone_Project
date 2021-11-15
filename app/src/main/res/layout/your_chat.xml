@@ -1,44 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/linearLayout_chat"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:layout_marginTop="5dp"
-  android:layout_marginLeft="10dp"
-  android:orientation="vertical">
-  <TextView
-    android:id="@+id/tv_nickname"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="left"
-    android:gravity="left"
-    android:layout_marginLeft="5dp"
-    android:fontFamily="@font/bold_font"
-    android:text="nickname"
-    android:textSize="18sp" />
-  <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bubble_left_tail"
-    android:orientation="vertical">
-    <TextView
-      android:id="@+id/tv_msg"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="left"
-      android:gravity="left"
-      android:paddingTop="10dp"
-      android:paddingBottom="10dp"
-      android:paddingRight="10dp"
-      android:paddingLeft="15dp"
-      android:autoLink="web|email|phone"
-      android:fontFamily="@font/normal_font"
-      android:text="msg"
-      android:textColor="@color/blackTextColor"
-      android:textSize="20sp"
-      android:maxLines="7"
-      android:ellipsize="end"
-      />
-  </LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/cl_oneItem_yourChat"
+  style="@style/ll_oneItem_chat">
 
-</LinearLayout>
+  <TextView
+    android:id="@+id/tv_nickName_yourChat"
+    style="@style/tv_nickName_chat"
+    android:text="@string/tv_nickName_chat"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+    android:id="@+id/tv_msg_yourChat"
+    style="@style/tv_msg_chat"
+    android:background="@drawable/bubble_left_tail"
+    android:paddingStart="15dp"
+    android:paddingEnd="10dp"
+    android:text="@string/tv_msg_chat"
+    android:textColor="@color/blackTextColor"
+    app:layout_constraintRight_toRightOf="@id/tv_nickName_yourChat"
+    app:layout_constraintTop_toBottomOf="@id/tv_nickName_yourChat" />
+
+  <TextView
+    android:id="@+id/tv_date_yourChat"
+    style="@style/tv_date_chat"
+    android:layout_marginStart="5dp"
+    android:gravity="end"
+    android:text="@string/tv_date_chat"
+    app:layout_constraintBottom_toBottomOf="@id/tv_msg_yourChat"
+    app:layout_constraintStart_toEndOf="@id/tv_msg_yourChat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

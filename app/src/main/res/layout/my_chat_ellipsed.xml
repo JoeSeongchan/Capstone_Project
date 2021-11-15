@@ -1,56 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/linearLayout_chat"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:layout_marginTop="5dp"
-  android:layout_marginRight="10dp"
-  android:orientation="vertical">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/cl_oneItem_myElChat"
+  style="@style/ll_oneItem_chat">
+
   <TextView
-    android:id="@+id/tv_nickname"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginRight="5dp"
-    android:layout_gravity="right"
-    android:fontFamily="@font/bold_font"
-    android:text="nickname"
-    android:textSize="18sp" />
+    android:id="@+id/tv_nickName_myElChat"
+    style="@style/tv_nickName_chat"
+    android:text="@string/tv_nickName_chat"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
   <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="right"
+    android:id="@+id/ll_subItem_myElChat"
+    style="@style/ll_subItem_chat"
+    android:layout_gravity="end"
     android:background="@drawable/bubble_right_tail"
-    android:orientation="vertical">
+    app:layout_constraintRight_toRightOf="@id/tv_nickName_myElChat"
+    app:layout_constraintTop_toBottomOf="@id/tv_nickName_myElChat">
+
     <TextView
-      android:id="@+id/tv_msg"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="right"
-      android:paddingTop="10dp"
-      android:paddingBottom="10dp"
-      android:paddingLeft="10dp"
-      android:paddingRight="15dp"
-      android:autoLink="web|email|phone"
-      android:ellipsize="end"
-      android:fontFamily="@font/normal_font"
-      android:maxLines="7"
-      android:text="msg"
-      android:textColor="@color/whiteTextColor"
-      android:textSize="20sp" />
+      android:id="@+id/tv_msg_myElChat"
+      style="@style/tv_msg_chat"
+      android:paddingStart="10dp"
+      android:paddingEnd="15dp"
+      android:text="@string/tv_msg_chat"
+      app:layout_constraintRight_toRightOf="@id/tv_nickName_myElChat"
+      app:layout_constraintTop_toBottomOf="@id/tv_nickName_myElChat" />
+
     <androidx.appcompat.widget.AppCompatButton
-      android:id="@+id/btn_fullTextButton"
-      android:textStyle="bold"
-      android:layout_width="match_parent"
-      android:layout_height="12sp"
-      android:layout_margin="10dp"
-      android:layout_gravity="left"
-      android:padding="0dp"
-      android:background="@color/my_chat_color"
-      android:gravity="bottom"
-      android:text="전체보기"
-      android:textColor="@color/chat_gray_color"
-      android:textSize="10sp"
-      />
+      android:id="@+id/btn_fullText_myElChat"
+      style="@style/btn_fullText_elChat"
+      android:layout_gravity="start"
+      android:text="@string/btn_fullText_elChat" />
   </LinearLayout>
 
-</LinearLayout>
+  <TextView
+    android:id="@+id/tv_date_myElChat"
+    style="@style/tv_date_chat"
+    android:layout_marginEnd="5dp"
+    android:gravity="end"
+    android:text="@string/tv_date_chat"
+    app:layout_constraintBottom_toBottomOf="@id/ll_subItem_myElChat"
+    app:layout_constraintEnd_toStartOf="@id/ll_subItem_myElChat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
