@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="tv_oneItemTitle_login" parent="@style/tv_oneItemTitle_register" />
+
+  <style name="et_oneItemInput_login" parent="@style/et_oneItemInput_register" />
+
+  <style name="ll_oneItem_login" parent="@style/ll_oneItem_register" />
+</resources>
