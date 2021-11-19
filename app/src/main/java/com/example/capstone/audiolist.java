@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
     /**오디오 파일 관련 변수*/
 
     // 오디오 파일 녹음 관련 변수
-    private MediaRecorder mediaRecorder;
-    private String audioFileName; // 오디오 녹음 생성 파일 이름
-    private boolean isRecording = false;    // 현재 녹음 상태를 확인하기 위함.
     private Uri audioUri = null; // 오디오 파일 uri
 
     // 이주엽 수정부분 111111111111111111
