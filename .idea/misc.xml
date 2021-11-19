@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/maptestsample/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/maptestsample/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/maptestsample/app/src/main/res/drawable/search_button.xml" value="0.125" />
-        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/maptestsample/app/src/main/res/drawable/searchbutton_f.xml" value="0.23385416666666667" />
-        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/maptestsample/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/maptestsample/app/src/main/res/layout/popup.xml" value="0.2" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/bottom_nav.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/create_group.xml" value="0.264" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_dashboard.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_home.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_notifications.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/group_detail.xml" value="0.264" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/search_group.xml" value="0.264" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/menu/bottom_nav.xml" value="0.221875" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.221875" />
       </map>
     </option>
   </component>
@@ -17,12 +21,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="SuppressABINotification">
-    <option name="modulesWithSuppressedNotConfigured">
-      <set>
-        <option value="maptestsample.app" />
-      </set>
-    </option>
   </component>
 </project>
