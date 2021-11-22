@@ -65,8 +65,10 @@ public class GroupAdapter extends RecyclerView.Adapter {
 
         else{myViewHolder.timeattack.setText("※모집 마감");};
 
-
         myViewHolder.title.setText(groupthis.getTitle());
+        myViewHolder.local.setText(groupthis.getLocal());
+        myViewHolder.distance.setText(Integer.toString(groupthis.getDistance()));
+        myViewHolder.members.setText(Integer.toString(groupthis.getMember()));
     }
 
 
