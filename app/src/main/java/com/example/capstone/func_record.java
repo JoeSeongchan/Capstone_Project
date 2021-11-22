@@ -2,8 +2,6 @@ package com.example.capstone;
 
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,14 +15,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class func_record extends AppCompatActivity {
     MediaRecorder recorder;
     String filePath;
-    String filename;
-    MediaPlayer player;
-    int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +37,7 @@ public class func_record extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 stopRecording();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

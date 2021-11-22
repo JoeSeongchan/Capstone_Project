@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,15 +15,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone">
         <activity
-            android:name=".MainActivity"
+            android:name=".audiolist"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".func_record"
+            />
+
+        <activity
+            android:name=".myprofile"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".option"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name=".main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".func_record"/>
+
 
 
 

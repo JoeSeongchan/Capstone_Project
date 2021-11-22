@@ -24,34 +24,24 @@
             android:textColor="#333333"
             android:textSize="40sp" />
 
+
         <TextView
             android:id="@+id/userid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="120dp"
+            android:layout_marginRight="84dp"
             android:background="@drawable/usernameback"
             android:text="leejoo"
             android:textColor="#333333"
             android:textSize="20sp" />
-
-        <ImageButton
-            android:id="@+id/mike"
-            android:layout_width="60dp"
-            android:layout_height="82dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:src="@drawable/ic_baseline_mic_24" />
-
 
         <ImageView
             android:id="@+id/album"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_alignBottom="@id/username"
-            android:layout_alignright="@id/username"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="-286dp"
@@ -126,7 +116,7 @@
             android:layout_below="@id/profile"
             android:layout_marginLeft="110dp"
             android:layout_marginTop="70dp"
-            android:text="24"
+            android:text="21"
             android:textColor="#333333"
             android:textSize="25sp" />
 
@@ -194,7 +184,7 @@
             android:layout_marginLeft="58dp"
             android:layout_below="@id/moimcount"
             android:background="@drawable/eval1"
-             />
+            />
 
         <TextView
             android:id="@+id/eval1c"
