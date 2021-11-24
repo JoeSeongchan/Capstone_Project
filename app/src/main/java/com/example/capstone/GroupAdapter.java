@@ -27,6 +27,7 @@ public class GroupAdapter extends RecyclerView.Adapter {
     String local;
 
 
+
     public GroupAdapter(Context context, List<groupdisplay> group){
         this.group = group;
         this.context = context;
@@ -44,7 +45,7 @@ public class GroupAdapter extends RecyclerView.Adapter {
 
         String title = groupthis.getTitle();
         String local = groupthis.getLocal();
-        int distance = groupthis.getDistance();
+
         int membermax = groupthis.getMax();
         int member = groupthis.getMember();
         long starttime = groupthis.getStarttime();
@@ -56,18 +57,20 @@ public class GroupAdapter extends RecyclerView.Adapter {
 
         if(nowt.before(startt)) {
              long lefttime = (startt.getTimeInMillis()-nowt.getTimeInMillis())/1000;
-             long leftday = lefttime/(24*60*60);
              long lefthour = lefttime%(24*60*60)/(60*60);
-             long leftminute = lefttime%(60*60)/60;
-
-             myViewHolder.timeattack.setText("※남은시간:"+leftday+"일 "+lefthour+"시 "+leftminute+"분");
+             if(lefthour<=3){
+              long leftday = lefttime/(24*60*60);
+              long leftminute = lefttime%(60*60)/60;
+              myViewHolder.timeattack.setText("※남은시간:"+lefthour+"시 "+leftminute+"분");
+             }
+             else{myViewHolder.timeattack.setText("");}
         }
-
-        else{myViewHolder.timeattack.setText("※모집 마감");};
+        else if(nowt.after(startt)){myViewHolder.timeattack.setText("※모집 마감");}
+        else {myViewHolder.timeattack.setText("");}
 
         myViewHolder.title.setText(groupthis.getTitle());
         myViewHolder.local.setText(groupthis.getLocal());
-        myViewHolder.distance.setText(Integer.toString(groupthis.getDistance()));
+        myViewHolder.moimstart.setText(Integer.toString(startt.get(Calendar.MONTH))+"월"+Integer.toString(startt.get(Calendar.DATE))+"일 "+Integer.toString(startt.get(Calendar.HOUR_OF_DAY))+":"+Integer.toString(startt.get(Calendar.MINUTE)));
         myViewHolder.members.setText(Integer.toString(groupthis.getMember()));
     }
 
@@ -79,7 +82,7 @@ public class GroupAdapter extends RecyclerView.Adapter {
         TextView timeattack;
 
         //만드는데 시간이 걸릴듯한 기능들
-        TextView distance;
+        TextView moimstart;
         TextView members;
         TextView local;
 
@@ -89,12 +92,13 @@ public class GroupAdapter extends RecyclerView.Adapter {
             title = itemView.findViewById(R.id.moimtitle);
             local = itemView.findViewById(R.id.moimlocal);
             timeattack = itemView.findViewById(R.id.moimtimeattack);
-            distance = itemView.findViewById(R.id.moimdistance);
+            moimstart = itemView.findViewById(R.id.moimstarttime);
             members = itemView.findViewById(R.id.moimmembers);
 
             moim.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                 }
             });
         }

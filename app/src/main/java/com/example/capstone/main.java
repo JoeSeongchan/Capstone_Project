@@ -1,6 +1,9 @@
 package com.example.capstone;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.AbsListView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +38,7 @@ public class main extends AppCompatActivity {
     private boolean isScrolling = false;
     private boolean isLastItemReached = false;
     private DocumentSnapshot lastVisible;
-    private int limit=15;
+    private int limit=5;
 
     // 여기서부터는 데이터베이스
     protected FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -65,6 +68,7 @@ public class main extends AppCompatActivity {
                 .limit(limit)
                 .whereGreaterThan("starttime", nowtime)
                 .whereLessThan("starttime", nowtime + 030000)
+                .orderBy("starttime", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -73,11 +77,11 @@ public class main extends AppCompatActivity {
                             if (task.getResult().size() <= 0) {
                             } else {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
                                     groupList.add(new groupdisplay(
                                             document.getData().get("title").toString(),
                                             "서울시",
                                             3,
-                                            Integer.parseInt(document.getData().get("max").toString()),
                                             2,
                                             Long.parseLong(document.getData().get("starttime").toString())));
                                 }
@@ -104,6 +108,7 @@ public class main extends AppCompatActivity {
                                         if (isScrolling && (firstVisibleItemPosition + visibleItemCount == totalItemCount) && !isLastItemReached) {
                                             isScrolling = false; // 필드명 수정
                                             Query nextQuery = db.collection("group")
+                                                    .orderBy("starttime")
                                                     .startAfter(lastVisible)
                                                     .limit(limit);
                                             nextQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -117,9 +122,8 @@ public class main extends AppCompatActivity {
                                                                         d.getData().get("title").toString(),
                                                                         "서울시",
                                                                         3,
-                                                                        d.getData().get("max").hashCode(),
                                                                         2,
-                                                                        d.getData().get("starttime").hashCode()));
+                                                                        Long.parseLong(d.getData().get("starttime").toString())));
 
                                                             }
                                                             // 어댑터 수정

@@ -35,8 +35,8 @@
             android:id="@+id/moimtimeattack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/moimtitle"
-            android:layout_toRightOf="@id/moimlocal"
+            android:layout_below="@id/moimlocal"
+            android:layout_toRightOf="@id/moimmembers"
             android:gravity="center"
             android:padding="8dp"
             android:text="※30분 이후 모집마감"
@@ -44,27 +44,26 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/moimdistance"
+            android:id="@+id/moimstarttime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/moimlocal"
-            android:text="1km"
-            android:textSize="20dp"
+            android:layout_below="@id/moimtitle"
+            android:layout_toRightOf="@id/moimlocal"
+            android:gravity="center"
             android:padding="8dp"
-            android:gravity="center"/>
+            android:text="11월25일 15:00"
+            android:textColor='#0054FF'
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/moimmembers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/moimlocal"
-            android:layout_toRightOf="@id/moimdistance"
-            android:text="인원 : 3/5"
-            android:textSize="20dp"
+            android:gravity="center"
             android:padding="8dp"
-            android:gravity="center"/>
-
-
+            android:text="인원 : 3/5"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
