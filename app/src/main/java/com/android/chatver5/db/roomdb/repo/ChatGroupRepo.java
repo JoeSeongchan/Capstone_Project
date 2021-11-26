@@ -3,15 +3,15 @@ package com.android.chatver5.db.roomdb.repo;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
-import com.android.chatver5.db.data.ChatGroup;
-import com.android.chatver5.db.roomdb.dao.ChatGroupDao;
+import com.android.chatver5.db.data.Party;
+import com.android.chatver5.db.roomdb.dao.PartyDao;
 import com.android.chatver5.db.roomdb.db.AppDatabase;
 import java.util.List;
 
 public class ChatGroupRepo {
 
-  private ChatGroupDao dao;
-  private LiveData<List<ChatGroup>> allData;
+  private PartyDao dao;
+  private LiveData<List<Party>> allData;
 
   public ChatGroupRepo(Application application) {
     AppDatabase db = AppDatabase.getDatabase(application);
@@ -19,15 +19,15 @@ public class ChatGroupRepo {
     allData = dao.getAll();
   }
 
-  public LiveData<List<ChatGroup>> getAll() {
+  public LiveData<List<Party>> getAll() {
     return allData;
   }
 
-  public void insert(ChatGroup data) {
+  public void insert(Party data) {
     AppDatabase.databaseWriteExecutor.execute(() -> dao.insert(data));
   }
 
-  public void delete(ChatGroup item) {
+  public void delete(Party item) {
     AppDatabase.databaseWriteExecutor.execute(() -> dao.delete(item));
   }
 

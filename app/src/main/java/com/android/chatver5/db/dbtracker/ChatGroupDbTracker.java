@@ -1,10 +1,9 @@
-package com.android.chatver5.db.firedbmanager;
+package com.android.chatver5.db.dbtracker;
 
 import android.app.Application;
-import androidx.annotation.NonNull;
-import com.android.chatver5.db.data.Chat;
-import com.android.chatver5.db.firedb.Db;
-import com.android.chatver5.db.roomdb.dao.ChatDao;
+import com.android.chatver5.db.data.Party;
+import com.android.chatver5.db.firedb.ServerDb;
+import com.android.chatver5.db.roomdb.dao.PartyDao;
 import com.android.chatver5.db.roomdb.db.AppDatabase;
 import com.android.chatver5.utilities.Utilities;
 import com.android.chatver5.utilities.Utilities.LogType;
@@ -14,25 +13,22 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatDbManager implements DbManager<Chat> {
+public class ChatGroupDbTracker implements DbTracker<Party> {
 
-  private final Db<Chat> db;
-  private final ChatDao dao;
+  private final ServerDb<Party> serverDb;
+  private final PartyDao dao;
   Disposable dispUpdate;
-  String groupId;
 
-  public ChatDbManager(String groupId, String fullPath, Application application) {
-    this.groupId = groupId;
-    this.db = new Db<>(fullPath, Chat.class);
-    this.dao = AppDatabase.getDatabase(application).chatDao();
+  public ChatGroupDbTracker(String fullPath, Application application) {
+    this.serverDb = new ServerDb<>(fullPath, Party.class);
+    this.dao = AppDatabase.getDatabase(application).chatGroupDao();
   }
 
   public void getUpdateInRealTime() {
     dispose();
-    // 데이터 일관성 체크.
     dispUpdate = keepRoomDbConsistentWithFireDb()
         // 실시간으로 데이터 추적.
-        .andThen(db.getUpdateInRealTime())
+        .andThen(serverDb.getUpdateInRealTime())
         .observeOn(Schedulers.io())
         // Room DB 조작.
         .flatMapCompletable(dbChange -> {
@@ -54,16 +50,16 @@ public class ChatDbManager implements DbManager<Chat> {
   }
 
   private Completable keepRoomDbConsistentWithFireDb() {
-//    update state 초기화. true ->false.
+    // update state 초기화. true -> false.
     return this.dao.resetUpdateState()
         .subscribeOn(Schedulers.io())
         // 서버에서 모든 데이터 가져오기.
-        .andThen(db.getAllItem())
+        .andThen(serverDb.getAllItem())
         .observeOn(Schedulers.computation())
         // primary key 만 뽑아내기.
         .map(items -> {
           List<String> primaryKeys = new ArrayList<>();
-          for (Chat item : items) {
+          for (Party item : items) {
             primaryKeys.add(item.getPrimaryKey());
           }
           return primaryKeys;
@@ -74,30 +70,6 @@ public class ChatDbManager implements DbManager<Chat> {
                 Completable.defer(() -> this.dao.markUpdatedItems(primaryKeys)))
         // 서버에 없는 데이터 제거.
         .andThen(this.dao.deleteNotUpdated());
-  }
-
-  @Override
-  public void addItem(@NonNull Chat item) {
-    db.runTransaction((transaction) -> {
-      db.setData(item, transaction);
-      return null;
-    });
-  }
-
-  @Override
-  public void deleteItem(@NonNull Chat item) {
-    db.runTransaction(transaction -> {
-      db.deleteData(item, transaction);
-      return null;
-    });
-  }
-
-  @Override
-  public void modifyItem(@NonNull Chat item) {
-    db.runTransaction(transaction -> {
-      db.setData(item, transaction);
-      return null;
-    });
   }
 
   @Override

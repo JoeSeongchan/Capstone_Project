@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.android.chatver5.R;
-import com.android.chatver5.db.data.BriefChatGroup;
+import com.android.chatver5.db.data.ChatGroup;
 import java.text.SimpleDateFormat;
 import java.util.EventListener;
 
@@ -27,7 +27,7 @@ public class BriefChatGroupViewHolder extends RecyclerView.ViewHolder {
   final private TextView tvDateTime;
   //  final private TextView tvUnReadMsgCount;
   private onItemClickListener onItemClickListener;
-  private BriefChatGroup data;
+  private ChatGroup data;
 
 
   public BriefChatGroupViewHolder(View v) {
@@ -58,7 +58,7 @@ public class BriefChatGroupViewHolder extends RecyclerView.ViewHolder {
     this.onItemClickListener = lis;
   }
 
-  public void bind(@NonNull BriefChatGroup data) {
+  public void bind(@NonNull ChatGroup data) {
     this.data = data;
 //    setRepPicSrc(R.drawable.def_rep_pic);
     this.tvTitle.setText(data.getTitle());

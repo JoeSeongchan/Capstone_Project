@@ -1,29 +1,81 @@
-com/android/chatver5/db/firedb/Db.java
- com.android.chatver5.db.firedb.Db
- com.android.chatver5.db.firedb.Db$1
-com/android/chatver5/activity/RegisterActivity.java
- com.android.chatver5.activity.RegisterActivity
-com/android/chatver5/db/firedbmanager/ChatDbManager.java
- com.android.chatver5.db.firedbmanager.ChatDbManager
- com.android.chatver5.db.firedbmanager.ChatDbManager$1
+com/android/chatver5/databinding/ActivityChatGroupBinding.java
+ com.android.chatver5.databinding.ActivityChatGroupBinding
+com/android/chatver5/activity/lifecyclerobserver/DbTrackerLifeCycleManager.java
+ com.android.chatver5.activity.lifecyclerobserver.DbTrackerLifeCycleManager
+com/android/chatver5/databinding/ActivityChatBinding.java
+ com.android.chatver5.databinding.ActivityChatBinding
+com/android/chatver5/databinding/MyChatBinding.java
+ com.android.chatver5.databinding.MyChatBinding
+com/android/chatver5/chat/viewholder/ChatUtilities.java
+ com.android.chatver5.chat.viewholder.ChatUtilities
+com/android/chatver5/activity/login/RegisterActivity.java
+ com.android.chatver5.activity.login.RegisterActivity
+com/android/chatver5/databinding/ActivityRegisterBinding.java
+ com.android.chatver5.databinding.ActivityRegisterBinding
+com/android/chatver5/db/data/Data.java
+ com.android.chatver5.db.data.Data
+com/android/chatver5/databinding/ActivityLoginBinding.java
+ com.android.chatver5.databinding.ActivityLoginBinding
+com/android/chatver5/db/data/ChatGroup.java
+ com.android.chatver5.db.data.ChatGroup
+com/android/chatver5/chat/adapter/ChatAdapter.java
+ com.android.chatver5.chat.adapter.ChatAdapter
+ com.android.chatver5.chat.adapter.ChatAdapter$ChatDiff
+com/android/chatver5/databinding/YourChatEllipsedBinding.java
+ com.android.chatver5.databinding.YourChatEllipsedBinding
+com/android/chatver5/chat/viewholder/ellipsed/YourEllipsedChatViewHolder.java
+ com.android.chatver5.chat.viewholder.ellipsed.YourEllipsedChatViewHolder
+com/android/chatver5/db/roomdb/viewmodel/BriefChatGroupViewModel.java
+ com.android.chatver5.db.roomdb.viewmodel.BriefChatGroupViewModel
+com/android/chatver5/db/roomdb/viewmodel/ChatViewModel.java
+ com.android.chatver5.db.roomdb.viewmodel.ChatViewModel
+com/android/chatver5/db/roomdb/dao/ChatDao.java
+ com.android.chatver5.db.roomdb.dao.ChatDao
+com/android/chatver5/db/data/Chat.java
+ com.android.chatver5.db.data.Chat
+com/android/chatver5/activity/chat/ChatGroupActivity.java
+ com.android.chatver5.activity.chat.ChatGroupActivity
+ com.android.chatver5.activity.chat.ChatGroupActivity$1
+com/android/chatver5/db/data/User.java
+ com.android.chatver5.db.data.User
+com/android/chatver5/db/dbtracker/ChatGroupDbTracker.java
+ com.android.chatver5.db.dbtracker.ChatGroupDbTracker
+ com.android.chatver5.db.dbtracker.ChatGroupDbTracker$1
+com/android/chatver5/db/dbtracker/DbTracker.java
+ com.android.chatver5.db.dbtracker.DbTracker
+com/android/chatver5/activity/CreateGroupActivity.java
+ com.android.chatver5.activity.CreateGroupActivity
+ com.android.chatver5.activity.CreateGroupActivity$1
+ com.android.chatver5.activity.CreateGroupActivity$2
+ com.android.chatver5.activity.CreateGroupActivity$3
+com/android/chatver5/db/roomdb/dao/ChatGroupDao.java
+ com.android.chatver5.db.roomdb.dao.ChatGroupDao
+com/android/chatver5/db/data/TypeConverter.java
+ com.android.chatver5.db.data.TypeConverter
+com/android/chatver5/db/roomdb/repo/BriefChatGroupRepo.java
+ com.android.chatver5.db.roomdb.repo.BriefChatGroupRepo
 com/android/chatver5/briefchatgroup/adapter/BriefChatGroupAdapter.java
  com.android.chatver5.briefchatgroup.adapter.BriefChatGroupAdapter
  com.android.chatver5.briefchatgroup.adapter.BriefChatGroupAdapter$BriefChatGroupDiff
 com/android/chatver5/chat/viewholder/noellipsed/YourChatViewHolder.java
  com.android.chatver5.chat.viewholder.noellipsed.YourChatViewHolder
-com/android/chatver5/db/roomdb/dao/ChatGroupDao.java
- com.android.chatver5.db.roomdb.dao.ChatGroupDao
 com/android/chatver5/briefchatgroup/viewholder/BriefChatGroupViewHolder.java
  com.android.chatver5.briefchatgroup.viewholder.BriefChatGroupViewHolder
  com.android.chatver5.briefchatgroup.viewholder.BriefChatGroupViewHolder$onItemClickListener
+com/android/chatver5/db/dbtracker/BriefChatGroupDbTracker.java
+ com.android.chatver5.db.dbtracker.BriefChatGroupDbTracker
+ com.android.chatver5.db.dbtracker.BriefChatGroupDbTracker$1
 com/android/chatver5/chat/viewholder/noellipsed/MyChatViewHolder.java
  com.android.chatver5.chat.viewholder.noellipsed.MyChatViewHolder
-com/android/chatver5/chat/viewholder/ChatUtilities.java
- com.android.chatver5.chat.viewholder.ChatUtilities
 com/android/chatver5/BuildConfig.java
  com.android.chatver5.BuildConfig
+com/android/chatver5/db/firedb/ServerDb.java
+ com.android.chatver5.db.firedb.ServerDb
+ com.android.chatver5.db.firedb.ServerDb$1
 com/android/chatver5/chat/viewholder/ChatBindable.java
  com.android.chatver5.chat.viewholder.ChatBindable
+com/android/chatver5/databinding/ActivityMainBinding.java
+ com.android.chatver5.databinding.ActivityMainBinding
 com/android/chatver5/db/roomdb/dao/BriefChatGroupDao.java
  com.android.chatver5.db.roomdb.dao.BriefChatGroupDao
 com/android/chatver5/db/firedb/change/DbChanges.java
@@ -32,58 +84,42 @@ com/android/chatver5/db/firedb/change/DbChanges.java
 com/android/chatver5/db/roomdb/db/AppDatabase.java
  com.android.chatver5.db.roomdb.db.AppDatabase
  com.android.chatver5.db.roomdb.db.AppDatabase$1
-com/android/chatver5/db/data/Data.java
- com.android.chatver5.db.data.Data
-com/android/chatver5/activity/LoginActivity.java
- com.android.chatver5.activity.LoginActivity
- com.android.chatver5.activity.LoginActivity$1
-com/android/chatver5/db/data/ChatGroup.java
- com.android.chatver5.db.data.ChatGroup
-com/android/chatver5/chat/adapter/ChatAdapter.java
- com.android.chatver5.chat.adapter.ChatAdapter
- com.android.chatver5.chat.adapter.ChatAdapter$ChatDiff
-com/android/chatver5/chat/viewholder/ellipsed/YourEllipsedChatViewHolder.java
- com.android.chatver5.chat.viewholder.ellipsed.YourEllipsedChatViewHolder
-com/android/chatver5/db/roomdb/viewmodel/BriefChatGroupViewModel.java
- com.android.chatver5.db.roomdb.viewmodel.BriefChatGroupViewModel
-com/android/chatver5/db/roomdb/repo/BriefChatGroupRepo.java
- com.android.chatver5.db.roomdb.repo.BriefChatGroupRepo
-com/android/chatver5/db/roomdb/viewmodel/ChatViewModel.java
- com.android.chatver5.db.roomdb.viewmodel.ChatViewModel
-com/android/chatver5/db/roomdb/dao/ChatDao.java
- com.android.chatver5.db.roomdb.dao.ChatDao
-com/android/chatver5/db/data/Chat.java
- com.android.chatver5.db.data.Chat
+com/android/chatver5/databinding/ActivityCreateGroupBinding.java
+ com.android.chatver5.databinding.ActivityCreateGroupBinding
+com/android/chatver5/activity/login/LoginActivity.java
+ com.android.chatver5.activity.login.LoginActivity
+ com.android.chatver5.activity.login.LoginActivity$1
+com/android/chatver5/db/firedb/TransactionManager.java
+ com.android.chatver5.db.firedb.TransactionManager
+com/android/chatver5/databinding/MyChatEllipsedBinding.java
+ com.android.chatver5.databinding.MyChatEllipsedBinding
+com/android/chatver5/databinding/YourChatBinding.java
+ com.android.chatver5.databinding.YourChatBinding
+com/android/chatver5/activity/chat/ChatActivity.java
+ com.android.chatver5.activity.chat.ChatActivity
+ com.android.chatver5.activity.chat.ChatActivity$1
 com/android/chatver5/chat/viewholder/ellipsed/MyEllipsedChatViewHolder.java
  com.android.chatver5.chat.viewholder.ellipsed.MyEllipsedChatViewHolder
-com/android/chatver5/db/firedbmanager/ChatGroupDbManager.java
- com.android.chatver5.db.firedbmanager.ChatGroupDbManager
- com.android.chatver5.db.firedbmanager.ChatGroupDbManager$1
 com/android/chatver5/db/roomdb/repo/ChatRepo.java
  com.android.chatver5.db.roomdb.repo.ChatRepo
-com/android/chatver5/db/firedbmanager/DbManager.java
- com.android.chatver5.db.firedbmanager.DbManager
+com/android/chatver5/databinding/ActivityGroupDetailBinding.java
+ com.android.chatver5.databinding.ActivityGroupDetailBinding
+com/android/chatver5/activity/lifecyclerobserver/ServerDbLifeCycleManager.java
+ com.android.chatver5.activity.lifecyclerobserver.ServerDbLifeCycleManager
 com/android/chatver5/db/roomdb/viewmodel/ChatGroupViewModel.java
  com.android.chatver5.db.roomdb.viewmodel.ChatGroupViewModel
 com/android/chatver5/db/roomdb/repo/ChatGroupRepo.java
  com.android.chatver5.db.roomdb.repo.ChatGroupRepo
-com/android/chatver5/db/firedbmanager/BriefChatGroupDbManager.java
- com.android.chatver5.db.firedbmanager.BriefChatGroupDbManager
- com.android.chatver5.db.firedbmanager.BriefChatGroupDbManager$1
 com/android/chatver5/utilities/Utilities.java
  com.android.chatver5.utilities.Utilities
  com.android.chatver5.utilities.Utilities$1
  com.android.chatver5.utilities.Utilities$LogType
-com/android/chatver5/db/data/User.java
- com.android.chatver5.db.data.User
+com/android/chatver5/databinding/ChatGroupBinding.java
+ com.android.chatver5.databinding.ChatGroupBinding
+com/android/chatver5/activity/GroupDetailActivity.java
+ com.android.chatver5.activity.GroupDetailActivity
 com/android/chatver5/db/data/BriefChatGroup.java
  com.android.chatver5.db.data.BriefChatGroup
-com/android/chatver5/db/data/TypeConverter.java
- com.android.chatver5.db.data.TypeConverter
-com/android/chatver5/activity/ChatActivity.java
- com.android.chatver5.activity.ChatActivity
- com.android.chatver5.activity.ChatActivity$1
-com/android/chatver5/activity/ChatGroupActivity.java
- com.android.chatver5.activity.ChatGroupActivity
- com.android.chatver5.activity.ChatGroupActivity$1
- com.android.chatver5.activity.ChatGroupActivity$2
+com/android/chatver5/db/dbtracker/ChatDbTracker.java
+ com.android.chatver5.db.dbtracker.ChatDbTracker
+ com.android.chatver5.db.dbtracker.ChatDbTracker$1

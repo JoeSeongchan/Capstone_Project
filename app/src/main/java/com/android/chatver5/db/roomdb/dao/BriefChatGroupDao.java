@@ -8,37 +8,37 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.android.chatver5.db.data.BriefChatGroup;
+import com.android.chatver5.db.data.ChatGroup;
 import io.reactivex.rxjava3.core.Completable;
 import java.util.List;
 
 @Dao
 public interface BriefChatGroupDao {
 
-  @Query("SELECT * FROM brief_chat_group_table")
-  LiveData<List<BriefChatGroup>> getAll();
+  @Query("SELECT * FROM chat_group_table")
+  LiveData<List<ChatGroup>> getAll();
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
-  Completable insert(BriefChatGroup item);
+  Completable insert(ChatGroup item);
 
-  @Query("DELETE FROM brief_chat_group_table")
+  @Query("DELETE FROM chat_group_table")
   Completable deleteAll();
 
   @Delete
-  Completable delete(BriefChatGroup item);
+  Completable delete(ChatGroup item);
 
   @Update
-  Completable update(BriefChatGroup item);
+  Completable update(ChatGroup item);
 
-  @Query("UPDATE brief_chat_group_table SET isUpdated = 'true' WHERE id IN (:ids)")
+  @Query("UPDATE chat_group_table SET isUpdated = 'true' WHERE id IN (:ids)")
   Completable markUpdatedItems(List<String> ids);
 
-  @Query("DELETE FROM brief_chat_group_table WHERE isUpdated = 'false'")
+  @Query("DELETE FROM chat_group_table WHERE isUpdated = 'false'")
   Completable deleteNotUpdated();
 
-  @Query("UPDATE brief_chat_group_table SET isUpdated = 'false'")
+  @Query("UPDATE chat_group_table SET isUpdated = 'false'")
   Completable resetUpdateState();
 
-  @Query("UPDATE brief_chat_group_table SET lastMsg = :lastMsg WHERE id = :groupId")
+  @Query("UPDATE chat_group_table SET lastMsg = :lastMsg WHERE id = :groupId")
   Completable updateLastMsg(String groupId, String lastMsg);
 }

@@ -3,7 +3,7 @@ package com.android.chatver5.db.roomdb.repo;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
-import com.android.chatver5.db.data.BriefChatGroup;
+import com.android.chatver5.db.data.ChatGroup;
 import com.android.chatver5.db.roomdb.dao.BriefChatGroupDao;
 import com.android.chatver5.db.roomdb.db.AppDatabase;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class BriefChatGroupRepo {
 
   private BriefChatGroupDao dao;
-  private LiveData<List<BriefChatGroup>> allData;
+  private LiveData<List<ChatGroup>> allData;
 
   public BriefChatGroupRepo(Application application) {
     AppDatabase db = AppDatabase.getDatabase(application);
@@ -19,15 +19,15 @@ public class BriefChatGroupRepo {
     allData = dao.getAll();
   }
 
-  public LiveData<List<BriefChatGroup>> getAll() {
+  public LiveData<List<ChatGroup>> getAll() {
     return allData;
   }
 
-  public void insert(BriefChatGroup data) {
+  public void insert(ChatGroup data) {
     AppDatabase.databaseWriteExecutor.execute(() -> dao.insert(data));
   }
 
-  public void delete(BriefChatGroup item) {
+  public void delete(ChatGroup item) {
     AppDatabase.databaseWriteExecutor.execute(() -> dao.delete(item));
   }
 

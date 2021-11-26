@@ -2,53 +2,66 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.android.chatver5">
 
-
   <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
   <application
-
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_cur_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.AppCompat.Light">
+    <activity
+      android:name=".activity.HomeActivity"
+      android:exported="true" />
+
+    <provider
+      android:name="androidx.core.content.FileProvider"
+      android:authorities="패키지명"
+      android:exported="false"
+      android:grantUriPermissions="true">
+      <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/fil_path" />
+    </provider>
 
     <activity
-      android:name=".activity.ChatGroupActivity"
+      android:name=".activity.chat.ChatGroupActivity"
       android:exported="true">
-      <!--      <intent-filter>-->
-      <!--        <action android:name="android.intent.action.MAIN" />-->
 
-      <!--        <category android:name="android.intent.category.LAUNCHER" />-->
-      <!--      </intent-filter>-->
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
     </activity>
-
     <activity
-      android:name=".activity.ChatActivity"
+      android:name=".activity.chat.ChatActivity"
       android:exported="true">
-      <!--      <intent-filter>-->
-      <!--        <action android:name="android.intent.action.MAIN" />-->
 
-      <!--        <category android:name="android.intent.category.LAUNCHER" />-->
-      <!--      </intent-filter>-->
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
     </activity>
-
     <activity
-      android:name=".activity.RegisterActivity"
+      android:name=".activity.login.RegisterActivity"
       android:exported="true">
-      <!--      <intent-filter>-->
-      <!--        <action android:name="android.intent.action.MAIN" />-->
 
-      <!--        <category android:name="android.intent.category.LAUNCHER" />-->
-      <!--      </intent-filter>-->
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
     </activity>
-
     <activity
-      android:name=".activity.LoginActivity"
+      android:name=".activity.login.LoginActivity"
       android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -56,8 +69,28 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity
+      android:name=".activity.CreateGroupActivity"
+      android:exported="true">
 
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
+    </activity>
+    <activity
+      android:name=".activity.GroupDetailActivity"
+      android:exported="true">
+
+      <!-- <intent-filter> -->
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+      <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+      <!-- </intent-filter> -->
+    </activity>
   </application>
-
 
 </manifest>

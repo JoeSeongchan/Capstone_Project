@@ -8,34 +8,34 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.android.chatver5.db.data.ChatGroup;
+import com.android.chatver5.db.data.Party;
 import io.reactivex.rxjava3.core.Completable;
 import java.util.List;
 
 @Dao
-public interface ChatGroupDao {
+public interface PartyDao {
 
-  @Query("SELECT * FROM chat_group_table")
-  LiveData<List<ChatGroup>> getAll();
+  @Query("SELECT * FROM party_table")
+  LiveData<List<Party>> getAll();
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
-  Completable insert(ChatGroup data);
+  Completable insert(Party data);
 
-  @Query("DELETE FROM chat_group_table")
+  @Query("DELETE FROM party_table")
   Completable deleteAll();
 
   @Delete
-  Completable delete(ChatGroup item);
+  Completable delete(Party item);
 
   @Update
-  Completable update(ChatGroup item);
+  Completable update(Party item);
 
-  @Query("UPDATE chat_group_table SET isUpdated = 'true' WHERE id IN (:ids)")
+  @Query("UPDATE party_table SET isUpdated = 'true' WHERE id IN (:ids)")
   Completable markUpdatedItems(List<String> ids);
 
-  @Query("DELETE FROM chat_group_table WHERE isUpdated = 'false'")
+  @Query("DELETE FROM party_table WHERE isUpdated = 'false'")
   Completable deleteNotUpdated();
 
-  @Query("UPDATE chat_group_table SET isUpdated = 'false'")
+  @Query("UPDATE party_table SET isUpdated = 'false'")
   Completable resetUpdateState();
 }

@@ -6,38 +6,43 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/chatRoomBackground"
-  tools:context=".activity.ChatGroupActivity">
+  tools:context=".activity.chat.ChatGroupActivity">
+
   <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/conLayoutTop"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     app:layout_constraintTop_toTopOf="parent">
+
     <TextView
+      android:id="@+id/tv_nick_chatGroup"
       android:layout_width="wrap_content"
       android:layout_height="match_parent"
-      android:text="login_id 님, 어서오세요."
-      android:id="@+id/tvLoginId"
-      app:layout_constraintLeft_toLeftOf="parent"
-      android:textSize="20sp"
+      android:layout_marginStart="10dp"
       android:gravity="center"
-      android:layout_marginStart="10dp"/>
+      android:text="@string/tv_nick_chatGroup"
+      android:textSize="20sp"
+      app:layout_constraintLeft_toLeftOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
+
   <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/conLayoutBottom"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     app:layout_constraintBottom_toBottomOf="parent">
+
     <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/button_send"
       android:layout_width="80dp"
       android:layout_height="match_parent"
       android:gravity="center"
-      android:onClick="btnAddGroupLis"
+      android:onClick="addGroup"
       android:text="@string/btnAddStr"
       app:layout_constraintRight_toRightOf="parent" />
   </androidx.constraintlayout.widget.ConstraintLayout>
+
   <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recyclerView"
+    android:id="@+id/rv_chatList_chat"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:scrollbars="vertical"

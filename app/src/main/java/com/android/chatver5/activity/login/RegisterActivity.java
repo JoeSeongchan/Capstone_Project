@@ -1,12 +1,12 @@
-package com.android.chatver5.activity;
+package com.android.chatver5.activity.login;
 
 import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,8 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.chatver5.R;
+import com.android.chatver5.activity.lifecyclerobserver.ServerDbLifeCycleManager;
+import com.android.chatver5.databinding.ActivityRegisterBinding;
 import com.android.chatver5.db.data.User;
-import com.android.chatver5.db.firedb.Db;
+import com.android.chatver5.db.firedb.ServerDb;
+import com.android.chatver5.db.firedb.TransactionManager;
 import com.android.chatver5.utilities.Utilities;
 import com.android.chatver5.utilities.Utilities.LogType;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,21 +37,31 @@ public class RegisterActivity extends AppCompatActivity {
 
   // DB.
   private FirebaseAuth firebaseAuth;
-  private Db<User> userDb;
+  private ServerDb<User> userServerDb;
+  private TransactionManager transactionManager;
 
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_register);
-    editActionBar();
-    initView();
-    initDb();
-    btnRegister.setOnClickListener(this::btnRegisterLis);
-    tvBirthInput.setOnClickListener(this::tvBirthInputLis);
+    setUi();
+    setDb();
+    btnRegister.setOnClickListener(this::registerAccount);
+    tvBirthInput.setOnClickListener(this::setBirthDate);
   }
 
-  private void editActionBar() {
+  private void setUi() {
+    ActivityRegisterBinding binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+    etNick = binding.etNickRegister;
+    etName = binding.etNameRegister;
+    etEmail = binding.etEmailRegister;
+    etPhone = binding.etPhoneRegister;
+    tvBirthInput = binding.tvBirthInputRegister;
+    etPwd = binding.etPwdRegister;
+    etPwdCheck = binding.etPwdCheckRegister;
+    btnRegister = binding.btnRegisterRegister;
+
     ActionBar actionBar = getSupportActionBar();
     actionBar.setTitle("회원 가입");
     // 홈 버튼, 뒤로 가기 버튼 활성화.
@@ -56,32 +69,26 @@ public class RegisterActivity extends AppCompatActivity {
     actionBar.setDisplayShowHomeEnabled(true);
   }
 
-  // view 초기화하는 함수.
-  private void initView() {
-    etNick = findViewById(R.id.etNick);
-    etName = findViewById(R.id.etName);
-    etEmail = findViewById(R.id.etEmail);
-    etPhone = findViewById(R.id.etPhone);
-    tvBirthInput = findViewById(R.id.tvBirthInput);
-    etPwd = findViewById(R.id.etPwd);
-    etPwdCheck = findViewById(R.id.etPwdCheck);
-    btnRegister = findViewById(R.id.btnRegister);
-  }
-
   // DB 설정하는 함수. (인증서버)
-  private void initDb() {
-    userDb = new Db<>("user_list", User.class);
+  private void setDb() {
     firebaseAuth = FirebaseAuth.getInstance();
+
+    // TransactionManager.
+    TransactionManager transactionManager = new TransactionManager();
+
+    // ServerDb 설정.
+    ServerDbLifeCycleManager serverDbLifeCycleManager = new ServerDbLifeCycleManager();
+    getLifecycle().addObserver(serverDbLifeCycleManager);
+    userServerDb = new ServerDb<>("user_list", User.class);
+    serverDbLifeCycleManager.add(userServerDb);
   }
 
-  private void onDateSet(DatePicker view, int year, int month, int day) {
-    tvBirthInput.setText(getString(R.string.tv_birth_date_form, year, month, day));
-  }
-
-  private void tvBirthInputLis(View view) {
+  private void setBirthDate(View view) {
+    OnDateSetListener onDateSetListener = (datePicker, year, month, day) ->
+        tvBirthInput.setText(getString(R.string.tv_birth_date_form, year, month, day));
     DatePickerDialog dialog = new DatePickerDialog(
         this,
-        this::onDateSet,
+        onDateSetListener,
         2021,
         11,
         15);
@@ -89,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
   }
 
   // 등록 버튼 클릭 리스너.
-  private void btnRegisterLis(@NonNull View view) {
+  private void registerAccount(@NonNull View view) {
     // 사용자가 입력한 정보 가져오기.
     String inputNick = etNick.getText().toString().trim();
     String inputName = etName.getText().toString().trim();
@@ -132,8 +139,8 @@ public class RegisterActivity extends AppCompatActivity {
                 inputPhone,
                 inputBirthDate);
             // user DB 에 사용자 정보 저장.
-            userDb.runTransaction(transaction -> {
-              userDb.setData(newUserData, transaction);
+            transactionManager.run(transaction -> {
+              userServerDb.setData(newUserData, transaction);
               return null;
             });
             // 회원 가입 화면 빠져나오기.
@@ -157,10 +164,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
   }
 
-
-  public boolean onSupportNavigateUp() {
-    onBackPressed();
-    ; // 뒤로가기 버튼이 눌렸을시
-    return super.onSupportNavigateUp(); // 뒤로가기 버튼
-  }
+//  public boolean onSupportNavigateUp() {
+//    onBackPressed();
+//    ; // 뒤로가기 버튼이 눌렸을시
+//    return super.onSupportNavigateUp(); // 뒤로가기 버튼
+//  }
 }

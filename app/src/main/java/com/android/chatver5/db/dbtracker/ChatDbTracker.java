@@ -1,10 +1,9 @@
-package com.android.chatver5.db.firedbmanager;
+package com.android.chatver5.db.dbtracker;
 
 import android.app.Application;
-import androidx.annotation.NonNull;
-import com.android.chatver5.db.data.BriefChatGroup;
-import com.android.chatver5.db.firedb.Db;
-import com.android.chatver5.db.roomdb.dao.BriefChatGroupDao;
+import com.android.chatver5.db.data.Chat;
+import com.android.chatver5.db.firedb.ServerDb;
+import com.android.chatver5.db.roomdb.dao.ChatDao;
 import com.android.chatver5.db.roomdb.db.AppDatabase;
 import com.android.chatver5.utilities.Utilities;
 import com.android.chatver5.utilities.Utilities.LogType;
@@ -14,15 +13,17 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BriefChatGroupDbManager implements DbManager<BriefChatGroup> {
+public class ChatDbTracker implements DbTracker<Chat> {
 
-  private final Db<BriefChatGroup> db;
-  private final BriefChatGroupDao dao;
+  private final ServerDb<Chat> serverDb;
+  private final ChatDao dao;
   Disposable dispUpdate;
+  String groupId;
 
-  public BriefChatGroupDbManager(String fullPath, Application application) {
-    this.db = new Db<>(fullPath, BriefChatGroup.class);
-    this.dao = AppDatabase.getDatabase(application).briefChatGroupDao();
+  public ChatDbTracker(String groupId, String fullPath, Application application) {
+    this.groupId = groupId;
+    this.serverDb = new ServerDb<>(fullPath, Chat.class);
+    this.dao = AppDatabase.getDatabase(application).chatDao();
   }
 
   public void getUpdateInRealTime() {
@@ -30,7 +31,7 @@ public class BriefChatGroupDbManager implements DbManager<BriefChatGroup> {
     // 데이터 일관성 체크.
     dispUpdate = keepRoomDbConsistentWithFireDb()
         // 실시간으로 데이터 추적.
-        .andThen(db.getUpdateInRealTime())
+        .andThen(serverDb.getUpdateInRealTime())
         .observeOn(Schedulers.io())
         // Room DB 조작.
         .flatMapCompletable(dbChange -> {
@@ -56,12 +57,12 @@ public class BriefChatGroupDbManager implements DbManager<BriefChatGroup> {
     return this.dao.resetUpdateState()
         .subscribeOn(Schedulers.io())
         // 서버에서 모든 데이터 가져오기.
-        .andThen(db.getAllItem())
+        .andThen(serverDb.getAllItem())
         .observeOn(Schedulers.computation())
         // primary key 만 뽑아내기.
         .map(items -> {
           List<String> primaryKeys = new ArrayList<>();
-          for (BriefChatGroup item : items) {
+          for (Chat item : items) {
             primaryKeys.add(item.getPrimaryKey());
           }
           return primaryKeys;
@@ -72,30 +73,6 @@ public class BriefChatGroupDbManager implements DbManager<BriefChatGroup> {
                 Completable.defer(() -> this.dao.markUpdatedItems(primaryKeys)))
         // 서버에 없는 데이터 제거.
         .andThen(this.dao.deleteNotUpdated());
-  }
-
-  @Override
-  public void addItem(@NonNull BriefChatGroup item) {
-    db.runTransaction((transaction) -> {
-      db.setData(item, transaction);
-      return null;
-    });
-  }
-
-  @Override
-  public void deleteItem(@NonNull BriefChatGroup item) {
-    db.runTransaction(transaction -> {
-      db.deleteData(item, transaction);
-      return null;
-    });
-  }
-
-  @Override
-  public void modifyItem(@NonNull BriefChatGroup item) {
-    db.runTransaction(transaction -> {
-      db.setData(item, transaction);
-      return null;
-    });
   }
 
   @Override

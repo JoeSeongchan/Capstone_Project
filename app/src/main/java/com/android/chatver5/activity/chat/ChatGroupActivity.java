@@ -1,4 +1,4 @@
-package com.android.chatver5.activity;
+package com.android.chatver5.activity.chat;
 
 
 import android.content.Intent;
@@ -10,68 +10,73 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import com.android.chatver5.R;
+import com.android.chatver5.activity.lifecyclerobserver.DbTrackerLifeCycleManager;
+import com.android.chatver5.activity.lifecyclerobserver.ServerDbLifeCycleManager;
 import com.android.chatver5.briefchatgroup.adapter.BriefChatGroupAdapter;
 import com.android.chatver5.briefchatgroup.adapter.BriefChatGroupAdapter.BriefChatGroupDiff;
-import com.android.chatver5.db.data.BriefChatGroup;
+import com.android.chatver5.databinding.ActivityChatGroupBinding;
 import com.android.chatver5.db.data.ChatGroup;
-import com.android.chatver5.db.firedbmanager.BriefChatGroupDbManager;
-import com.android.chatver5.db.firedbmanager.ChatGroupDbManager;
+import com.android.chatver5.db.data.Party;
+import com.android.chatver5.db.dbtracker.BriefChatGroupDbTracker;
+import com.android.chatver5.db.dbtracker.ChatGroupDbTracker;
+import com.android.chatver5.db.firedb.ServerDb;
+import com.android.chatver5.db.firedb.TransactionManager;
 import com.android.chatver5.db.roomdb.viewmodel.BriefChatGroupViewModel;
+import java.util.ArrayList;
 
 public class ChatGroupActivity extends AppCompatActivity {
 
-  public static final String SWIPE_RIGHT_COLOR = "#FF9800";
-  private static final boolean DEVELOPER_MODE = true;
   private String myNick;
-  private BriefChatGroupViewModel model;
   private RecyclerView rv;
   private BriefChatGroupAdapter adapter;
-  private BriefChatGroupDbManager briefGroupDbManager;
-  private ChatGroupDbManager groupDbManager;
+
+  private ServerDb<Party> partyServerDb;
+  private ServerDb<ChatGroup> chatGroupServerDb;
+  private TransactionManager transactionManager;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    unpackIntent();
     setUi();
-    getNick();
     setDb();
   }
 
-  private void onItemClick(String groupId) {
+  private void unpackIntent() {
+    Bundle bundle = getIntent().getExtras();
+    this.myNick = bundle.getString("nick");
+  }
+
+  private void setUi() {
+    ActivityChatGroupBinding binding = ActivityChatGroupBinding
+        .inflate(getLayoutInflater());
+    setContentView(binding.getRoot());
+
+    // 사용자 닉네임 표시.
+    binding.tvNickChatGroup.setText(getString(R.string.tv_nick_chatGroup, myNick));
+
+    // recycler view 설정.
+    this.rv = binding.rvChatListChat;
+    this.adapter = new BriefChatGroupAdapter(new BriefChatGroupDiff(), this::startChatAct);
+    this.rv.setAdapter(this.adapter);
+    this.rv.setLayoutManager(new LinearLayoutManager(this));
+    this.rv.setItemAnimator(null);
+    setSwipe();
+  }
+
+  private void startChatAct(String groupId) {
     Intent intent = new Intent(this, ChatActivity.class);
     intent.putExtra("groupId", groupId);
     intent.putExtra("myNick", myNick);
     startActivity(intent);
-  }
-
-  private void setUi() {
-    setContentView(R.layout.activity_chat_group);
-
-    // set recycler view.
-    this.rv = findViewById(R.id.recyclerView);
-    this.adapter = new BriefChatGroupAdapter(new BriefChatGroupDiff(), this::onItemClick);
-
-    this.rv.setAdapter(this.adapter);
-    this.rv.setLayoutManager(new LinearLayoutManager(this));
-    rv.setItemAnimator(new DefaultItemAnimator() {
-      @Override
-      public boolean animateAdd(ViewHolder holder) {
-        dispatchAddFinished(holder);
-        return true;
-      }
-    });
-    setSwipe();
   }
 
   private void setSwipe() {
@@ -89,8 +94,11 @@ public class ChatGroupActivity extends AppCompatActivity {
       public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
         if (direction == ItemTouchHelper.LEFT) {
-          briefGroupDbManager.deleteItem(adapter.getItem(position));
-          groupDbManager.deleteItem(adapter.getItem(position).getPrimaryKey());
+          transactionManager.run(transaction -> {
+            chatGroupServerDb.deleteData(adapter.getItem(position), transaction);
+            partyServerDb.deleteData(adapter.getItem(position).getPrimaryKey(), transaction);
+            return null;
+          });
         }
       }
 
@@ -135,32 +143,52 @@ public class ChatGroupActivity extends AppCompatActivity {
     itemTouchHelper.attachToRecyclerView(this.rv);
   }
 
-  private void getNick() {
-    myNick = getIntent().getStringExtra("nick");
-    // display user id.
-    TextView tvLoginId = findViewById(R.id.tvLoginId);
-    String msg = tvLoginId.getText().toString().replace("login_id", myNick);
-    tvLoginId.setText(msg);
-  }
-
-  // function to set db.
   public void setDb() {
-    model = new ViewModelProvider(this).get(BriefChatGroupViewModel.class);
+    // livedata.
+    BriefChatGroupViewModel model = new ViewModelProvider(this).get(BriefChatGroupViewModel.class);
     model.getAll().observe(this,
         briefChatGroups -> this.adapter.submitList(briefChatGroups));
-    briefGroupDbManager = new BriefChatGroupDbManager(
+
+    // TransactionManager 관리.
+    this.transactionManager = new TransactionManager();
+
+    // ServerDb 관리.
+    ServerDbLifeCycleManager serverDbLifeCycleManager = new ServerDbLifeCycleManager();
+    getLifecycle().addObserver(serverDbLifeCycleManager);
+    chatGroupServerDb = new ServerDb<>("user_list/" + myNick + "/chat_group_list/",
+        ChatGroup.class);
+    partyServerDb = new ServerDb<>("chat_group_list/", Party.class);
+    serverDbLifeCycleManager.add(chatGroupServerDb);
+    serverDbLifeCycleManager.add(partyServerDb);
+
+    // DbTracker 관리.
+    DbTrackerLifeCycleManager dbTrackerLifeCycleManager = new DbTrackerLifeCycleManager();
+    getLifecycle().addObserver(dbTrackerLifeCycleManager);
+    BriefChatGroupDbTracker briefChatGroupDbTracker = new BriefChatGroupDbTracker(
         "user_list/" + myNick + "/chat_group_list/",
         getApplication());
-    groupDbManager = new ChatGroupDbManager("chat_group_list/", getApplication());
-    briefGroupDbManager.getUpdateInRealTime();
-    groupDbManager.getUpdateInRealTime();
+    ChatGroupDbTracker chatGroupDbTracker = new ChatGroupDbTracker("chat_group_list/",
+        getApplication());
+    briefChatGroupDbTracker.getUpdateInRealTime();
+    chatGroupDbTracker.getUpdateInRealTime();
+    dbTrackerLifeCycleManager.add(briefChatGroupDbTracker);
+    dbTrackerLifeCycleManager.add(chatGroupDbTracker);
   }
 
-  // add group 버튼 클릭시 할 행동.
-  public void btnAddGroupLis(View v) {
-    ChatGroup newChatGroup = new ChatGroup("dum01", "dum01", 10, "dum01", "dum01");
-    groupDbManager.addItem(newChatGroup);
-    BriefChatGroup newData = new BriefChatGroup(newChatGroup);
-    briefGroupDbManager.addItem(newData);
+  // group 추가하는 함수.
+  public void addGroup(View v) {
+    Party newParty = new Party("dum01", "dum01", 10, "dum01", "dum01");
+    transactionManager.run(transaction -> {
+      partyServerDb.setData(newParty, transaction);
+      ChatGroup newChatGroup = new ChatGroup(newParty);
+      chatGroupServerDb.setData(newChatGroup, transaction);
+      return null;
+    });
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    adapter.submitList(new ArrayList<>());
   }
 }

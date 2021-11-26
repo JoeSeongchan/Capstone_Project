@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback;
 import androidx.recyclerview.widget.ListAdapter;
 import com.android.chatver5.briefchatgroup.viewholder.BriefChatGroupViewHolder;
 import com.android.chatver5.briefchatgroup.viewholder.BriefChatGroupViewHolder.onItemClickListener;
-import com.android.chatver5.db.data.BriefChatGroup;
+import com.android.chatver5.db.data.ChatGroup;
 
-public class BriefChatGroupAdapter extends ListAdapter<BriefChatGroup, BriefChatGroupViewHolder> {
+public class BriefChatGroupAdapter extends ListAdapter<ChatGroup, BriefChatGroupViewHolder> {
 
   private onItemClickListener onItemClickListener;
 
   public BriefChatGroupAdapter(
-      @NonNull ItemCallback<BriefChatGroup> diffCallback,
+      @NonNull ItemCallback<ChatGroup> diffCallback,
       onItemClickListener onItemClickListener) {
     super(diffCallback);
     this.onItemClickListener = onItemClickListener;
@@ -35,7 +35,7 @@ public class BriefChatGroupAdapter extends ListAdapter<BriefChatGroup, BriefChat
     holder.bind(getItem(position));
   }
 
-  public BriefChatGroup getItem(int pos) {
+  public ChatGroup getItem(int pos) {
     return super.getItem(pos);
   }
 
@@ -44,18 +44,18 @@ public class BriefChatGroupAdapter extends ListAdapter<BriefChatGroup, BriefChat
     return getCurrentList().get(position).hashCode();
   }
 
-  public static class BriefChatGroupDiff extends DiffUtil.ItemCallback<BriefChatGroup> {
+  public static class BriefChatGroupDiff extends DiffUtil.ItemCallback<ChatGroup> {
 
     @Override
-    public boolean areItemsTheSame(@NonNull BriefChatGroup oldItem,
-        @NonNull BriefChatGroup newItem) {
+    public boolean areItemsTheSame(@NonNull ChatGroup oldItem,
+        @NonNull ChatGroup newItem) {
       return oldItem.getPrimaryKey().compareTo(newItem.getPrimaryKey()) == 0 &&
           oldItem.getLastMsg().compareTo(newItem.getLastMsg()) == 0;
     }
 
     @Override
-    public boolean areContentsTheSame(@NonNull BriefChatGroup oldItem,
-        @NonNull BriefChatGroup newItem) {
+    public boolean areContentsTheSame(@NonNull ChatGroup oldItem,
+        @NonNull ChatGroup newItem) {
       return oldItem.getPrimaryKey().compareTo(newItem.getPrimaryKey()) == 0 &&
           oldItem.getLastMsg().compareTo(newItem.getLastMsg()) == 0;
     }

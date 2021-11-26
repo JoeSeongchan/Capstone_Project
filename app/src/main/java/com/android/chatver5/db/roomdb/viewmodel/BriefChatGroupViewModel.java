@@ -5,13 +5,13 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import com.android.chatver5.db.data.BriefChatGroup;
+import com.android.chatver5.db.data.ChatGroup;
 import com.android.chatver5.db.roomdb.repo.BriefChatGroupRepo;
 import java.util.List;
 
 public class BriefChatGroupViewModel extends AndroidViewModel {
 
-  private final LiveData<List<BriefChatGroup>> allData;
+  private final LiveData<List<ChatGroup>> allData;
   private BriefChatGroupRepo repo;
 
   public BriefChatGroupViewModel(@NonNull Application application) {
@@ -21,15 +21,15 @@ public class BriefChatGroupViewModel extends AndroidViewModel {
   }
 
   // method to return a cached list of words.
-  public LiveData<List<BriefChatGroup>> getAll() {
+  public LiveData<List<ChatGroup>> getAll() {
     return allData;
   }
 
-  public void insert(BriefChatGroup item) {
+  public void insert(ChatGroup item) {
     repo.insert(item);
   }
 
-  public void delete(BriefChatGroup item) {
+  public void delete(ChatGroup item) {
     repo.delete(item);
   }
 

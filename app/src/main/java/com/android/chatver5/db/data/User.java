@@ -1,11 +1,12 @@
 package com.android.chatver5.db.data;
 
 import androidx.annotation.NonNull;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
 
-public class User implements Data {
+public class User implements Data, Serializable {
 
   private static final String DEF_NAME = "def_name";
   private static final String DEF_ID = "def_id";

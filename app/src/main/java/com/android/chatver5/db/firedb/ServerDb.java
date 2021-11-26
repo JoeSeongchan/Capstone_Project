@@ -5,7 +5,6 @@ import com.android.chatver5.db.firedb.change.DbChanges;
 import com.android.chatver5.db.firedb.change.DbChanges.DbChangesType;
 import com.android.chatver5.utilities.Utilities;
 import com.android.chatver5.utilities.Utilities.LogType;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -15,7 +14,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Transaction;
-import com.google.firebase.firestore.Transaction.Function;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
@@ -24,14 +22,14 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class Db<T extends Data> {
+public class ServerDb<T extends Data> {
 
   protected FirebaseFirestore db;
   protected Class<T> dataClass;
   protected CollectionReference cltRef;
   protected ListenerRegistration lisReg;
 
-  public Db(String fullPath, Class<T> dataClass) {
+  public ServerDb(String fullPath, Class<T> dataClass) {
     this.dataClass = dataClass;
     db = FirebaseFirestore.getInstance();
     cltRef = db.collection(fullPath);
@@ -231,11 +229,7 @@ public class Db<T extends Data> {
         .update(cltRef.document(data.getPrimaryKey()), fieldName, FieldValue.serverTimestamp());
   }
 
-  public Task<Void> runTransaction(Function<Void> function) {
-    return db.runTransaction(function);
-  }
-
-  public void clearLisReg() {
+  public void turnOffListener() {
     if (this.lisReg != null) {
       this.lisReg.remove();
     }

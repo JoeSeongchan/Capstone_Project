@@ -4,28 +4,24 @@
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\font\\bold_font.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\font_nanum_barun_gothic.ttf.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\font\\nanum_barun_gothic.ttf"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_search_icon.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\search_icon.xml"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\font_normal_font.xml.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\font\\normal_font.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\font_nanum_barun_gothic.ttf.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\font\\nanum_barun_gothic.ttf"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_bubble_right.xml.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\bubble_right.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_your_chat_ellipsed.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\your_chat_ellipsed.xml"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_chat.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_chat.xml"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_create_group.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_create_group.xml"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_your_chat.xml.flat",
@@ -36,108 +32,60 @@
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\xml_fil_path.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\xml\\fil_path.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_register.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_register.xml"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_notifications_black_24dp.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\font_nanum_barun_gothic_light.ttf.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\font\\nanum_barun_gothic_light.ttf"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_chat_group.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_chat_group.xml"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_app_icon.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\app_icon.png"
-    },
-    {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_app_icon_2.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\app_icon_2.png"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_login.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_login.xml"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_background.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\ic_launcher_background.xml"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\font_nanum_barun_gothic_ultra_light.ttf.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\font\\nanum_barun_gothic_ultra_light.ttf"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable_def_rep_pic.jpg.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable\\def_rep_pic.jpg"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_bubble_left.xml.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\bubble_left.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_my_chat_ellipsed.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\my_chat_ellipsed.xml"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_chat_group.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\chat_group.xml"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable_google_favicon.png.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable\\google_favicon.png"
-    },
-    {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_bubble_left_tail.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\bubble_left_tail.xml"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
@@ -152,6 +100,114 @@
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable\\ic_baseline_add_24.xml"
     },
     {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_home_icon.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\home_icon.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_profile_icon.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\profile_icon.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_dashboard_black_24dp.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\ic_dashboard_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_your_chat_ellipsed.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\your_chat_ellipsed.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_chat.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_chat.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_arrow_left.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\arrow_left.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_register.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_app_icon.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\app_icon.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_chat_group.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_chat_group.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_app_icon_2.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\app_icon_2.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_home_black_24dp.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_map_icon.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\map_icon.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable_def_rep_pic.jpg.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable\\def_rep_pic.jpg"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_my_chat_ellipsed.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\my_chat_ellipsed.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_chat_icon.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\chat_icon.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_arrow_right.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\arrow_right.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_chat_group.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\chat_group.xml"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable_google_favicon.png.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable\\google_favicon.png"
+    },
+    {
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_bubble_left_tail.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\bubble_left_tail.xml"
+    },
+    {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_my_chat.xml.flat",
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\my_chat.xml"
     },
@@ -160,8 +216,8 @@
         "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\drawable-v24\\bubble_right_tail.xml"
     },
     {
-        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\gitkraken_project\\ChatVer5\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_group_detail.xml.flat",
+        "source": "C:\\gitkraken_project\\ChatVer5\\app\\src\\main\\res\\layout\\activity_group_detail.xml"
     },
     {
         "merged": "C:\\gitkraken_project\\ChatVer5\\app\\build\\intermediates\\merged_res\\debug\\font_nanum_barun_gothic_bold.ttf.flat",

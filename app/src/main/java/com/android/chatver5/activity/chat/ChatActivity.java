@@ -1,8 +1,6 @@
-package com.android.chatver5.activity;
+package com.android.chatver5.activity.chat;
 
 
-import android.Manifest.permission;
-import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -13,75 +11,65 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.android.chatver5.R;
+import com.android.chatver5.activity.lifecyclerobserver.DbTrackerLifeCycleManager;
+import com.android.chatver5.activity.lifecyclerobserver.ServerDbLifeCycleManager;
 import com.android.chatver5.chat.adapter.ChatAdapter;
 import com.android.chatver5.chat.adapter.ChatAdapter.ChatDiff;
+import com.android.chatver5.databinding.ActivityChatBinding;
 import com.android.chatver5.db.data.Chat;
-import com.android.chatver5.db.firedbmanager.ChatDbManager;
+import com.android.chatver5.db.dbtracker.ChatDbTracker;
+import com.android.chatver5.db.firedb.ServerDb;
+import com.android.chatver5.db.firedb.TransactionManager;
 import com.android.chatver5.db.roomdb.viewmodel.ChatViewModel;
 import com.android.chatver5.utilities.Utilities;
-import com.android.chatver5.utilities.Utilities.LogType;
-import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import java.util.ArrayList;
 
 public class ChatActivity extends AppCompatActivity {
 
-  // 접근 권한 코드.
-  private static final int REQ_CODE_PERMISSION = 0;
-  private String myNick = "이슬"; // 첫번째 단말기의 닉네임.
-  private ChatViewModel model;
+  private String myNick;
+  private String groupId;
   private RecyclerView rv;
   private ChatAdapter adapter;
-  private ChatDbManager dbManager;
+  private TransactionManager transactionManager;
+  private ServerDb<Chat> chatServerDb;
   private EditText etMsg;
-  private boolean isEtFocused = false;
-  private CompositeDisposable disps;
-  private String groupId;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    ActivityCompat.requestPermissions(this, new String[]{permission.READ_EXTERNAL_STORAGE},
-        REQ_CODE_PERMISSION);
+    unpackIntent();
+    setupUI();
+    setupDb();
   }
 
-  // 권한 요청할 때 할 행동.
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-      @NonNull int[] grantResults) {
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    if (requestCode == REQ_CODE_PERMISSION) {
-      for (int grantResult : grantResults) {
-        if (grantResult == PackageManager.PERMISSION_DENIED) {
-          finish();
-          Utilities.log(LogType.w, "permission is denied. finish.");
-          return;
-        }
-      }
-      this.groupId = getIntent().getStringExtra("groupId");
-      this.myNick = getIntent().getStringExtra("myNick");
-      setupUI();
-      setupDb();
-    }
+  private void unpackIntent() {
+    Bundle bundle = getIntent().getExtras();
+    this.groupId = bundle.getString("groupId");
+    this.myNick = bundle.getString("myNick");
   }
 
   // ui 설정하는 함수.
   private void setupUI() {
-    setContentView(R.layout.activity_chat);
-    etMsg = findViewById(R.id.editText_chat);
+    // 접근 권한 코드.
+    ActivityChatBinding binding = ActivityChatBinding
+        .inflate(getLayoutInflater());
+    setContentView(binding.getRoot());
+    etMsg = binding.etMsgChat;
 
+    // enter 입력 시 처리 방안.
     etMsg.setOnKeyListener((v, keyCode, event) -> {
       if (keyCode == KeyEvent.KEYCODE_ENTER
           && event.getAction() == KeyEvent.ACTION_DOWN) {
-        sendMsg();
-        Utilities.log(LogType.d, "enter pressed.");
+        sendMsg(binding.buttonSend);
         return true;
       }
       return false;
@@ -92,9 +80,12 @@ public class ChatActivity extends AppCompatActivity {
     adapter = new ChatAdapter(new ChatDiff(), myNick);
     rv.setAdapter(adapter);
     rv.setLayoutManager(new LinearLayoutManager(this));
+    this.rv.setItemAnimator(null);
+
     setSwipe();
   }
 
+  // recycler view 아이템 스와이프 리스너 설정하는 함수.
   private void setSwipe() {
     ItemTouchHelper.SimpleCallback swipeClbk = new ItemTouchHelper.SimpleCallback(0,
         ItemTouchHelper.LEFT) {
@@ -110,7 +101,10 @@ public class ChatActivity extends AppCompatActivity {
       public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
         if (direction == ItemTouchHelper.LEFT) {
-          dbManager.deleteItem(adapter.getItem(position));
+          transactionManager.run(transaction -> {
+            chatServerDb.deleteData(adapter.getItem(position), transaction);
+            return null;
+          });
         }
       }
 
@@ -157,32 +151,48 @@ public class ChatActivity extends AppCompatActivity {
 
   // db 설정하는 함수.
   public void setupDb() {
-
-    model = new ViewModelProvider(this).get(ChatViewModel.class);
+    ChatViewModel model = new ViewModelProvider(this).get(ChatViewModel.class);
     model.getAll().observe(this,
-        chatList -> {
-          this.adapter.submitList(chatList);
-        });
-    // group id = dum_id 임시 설정. (테스트)
-    dbManager = new ChatDbManager(
+        chatList -> this.adapter.submitList(chatList));
+
+    // TransactionManager.
+    transactionManager = new TransactionManager();
+
+    // ServerDb 설정.
+    ServerDbLifeCycleManager serverDbLifeCycleManager = new ServerDbLifeCycleManager();
+    getLifecycle().addObserver(serverDbLifeCycleManager);
+    chatServerDb = new ServerDb<>("chat_group_list/" + groupId + "/chat_list", Chat.class);
+    serverDbLifeCycleManager.add(chatServerDb);
+
+    // DbTracker 설정.
+    DbTrackerLifeCycleManager dbTrackerLifeCycleManager = new DbTrackerLifeCycleManager();
+    getLifecycle().addObserver(dbTrackerLifeCycleManager);
+    ChatDbTracker chatDbTracker = new ChatDbTracker(
         groupId,
         "chat_group_list/" + groupId + "/chat_list",
         getApplication());
-    dbManager.getUpdateInRealTime();
+    chatDbTracker.getUpdateInRealTime();
+    dbTrackerLifeCycleManager.add(chatDbTracker);
   }
 
-  // send 버튼 클릭시 할 행동.
-  public void btnSendClickLis(View v) {
-    sendMsg();
-  }
-
-  private void sendMsg() {
+  // 사용자가 입력한 메시지를 firebase firestore 서버로 보내는 함수.
+  public void sendMsg(View view) {
     String msg = etMsg.getText().toString();
     if (msg.length() == 0) {
       return;
     }
     Chat item = new Chat(groupId, myNick, msg);
-    dbManager.addItem(item);
+    transactionManager.run(transaction -> {
+      chatServerDb.setData(item, transaction);
+      return null;
+    });
     etMsg.setText("");
+  }
+
+  @Override
+  protected void onDestroy() {
+    adapter.submitList(new ArrayList<>());
+    Toast.makeText(this, Utilities.makeLog("destroy"), Toast.LENGTH_SHORT).show();
+    super.onDestroy();
   }
 }

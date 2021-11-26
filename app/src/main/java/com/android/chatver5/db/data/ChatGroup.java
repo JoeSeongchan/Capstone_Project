@@ -11,18 +11,18 @@ import com.google.firebase.firestore.ServerTimestamp;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 @Entity(tableName = "chat_group_table")
 public class ChatGroup implements Serializable, Data {
 
   // default constants that fields have.
-  public static final Timestamp DEF_TIME;
+  private static final String DEF_ID = "def_id";
   private static final String DEF_TITLE = "def_title";
-  private static final String DEF_HOST = "def_host";
-  private static final int DEF_MAX_NUM = 0;
   private static final String DEF_PIC = "def_pic";
   private static final int DEF_CUR_NUM = 0;
-  private static final String DEF_KAR_ID = "def_kar_id";
+  private static final Timestamp DEF_TIME;
+  private static final String DEF_LAST_MSG = "def_last_msg";
 
   static {
     Date dumDate = new Date();
@@ -33,44 +33,47 @@ public class ChatGroup implements Serializable, Data {
   // columns (=fields)
   @PrimaryKey
   @NonNull
-  private String id = AUTO_GENERATED_KEY;
+  private String id;
   @NonNull
   private String title;
-  @NonNull
-  private String hostId;
-  private int maxUserNum;
   @NonNull
   private String picUri;
   private int curUserNum = DEF_CUR_NUM;
   @ServerTimestamp
   @NonNull
-  private Timestamp startDateTime = DEF_TIME;
-  @NonNull
-  private String karaokeId;
+  private Timestamp createdAt = DEF_TIME;
   @Exclude
   private boolean isUpdated = false;
+  @Exclude
+  private String lastMsg = DEF_LAST_MSG;
 
-  public ChatGroup() {
-    title = DEF_TITLE;
-    hostId = DEF_HOST;
-    maxUserNum = DEF_MAX_NUM;
-    picUri = DEF_PIC;
-    karaokeId = DEF_KAR_ID;
+  @Ignore
+  public ChatGroup(@NonNull String id, @NonNull String title, @NonNull String picUri) {
+    this.id = id;
+    this.title = title;
+    this.picUri = picUri;
   }
 
   @Ignore
-  public ChatGroup(
-      @NonNull String title,
-      @NonNull String hostId,
-      int maxUserNum,
-      @NonNull String picUri,
-      @NonNull String karaokeId
-  ) {
-    this.title = title;
-    this.hostId = hostId;
-    this.maxUserNum = maxUserNum;
-    this.picUri = picUri;
-    this.karaokeId = karaokeId;
+  public ChatGroup(@NonNull Party detail) {
+    this.id = detail.getId();
+    this.title = detail.getTitle();
+    this.picUri = detail.getPicUri();
+    this.createdAt = detail.getStartDateTime();
+  }
+
+  public ChatGroup() {
+    id = DEF_ID;
+    title = DEF_TITLE;
+    picUri = DEF_PIC;
+  }
+
+  public String getLastMsg() {
+    return lastMsg;
+  }
+
+  public void setLastMsg(String lastMsg) {
+    this.lastMsg = lastMsg;
   }
 
   public boolean isUpdated() {
@@ -79,6 +82,15 @@ public class ChatGroup implements Serializable, Data {
 
   public void setUpdated(boolean updated) {
     isUpdated = updated;
+  }
+
+  @NonNull
+  public String getPicUri() {
+    return picUri;
+  }
+
+  public void setPicUri(@NonNull String picUri) {
+    this.picUri = picUri;
   }
 
   @NonNull
@@ -99,32 +111,6 @@ public class ChatGroup implements Serializable, Data {
     this.title = title;
   }
 
-  @NonNull
-  public String getPicUri() {
-    return picUri;
-  }
-
-  public void setPicUri(@NonNull String picUri) {
-    this.picUri = picUri;
-  }
-
-  @NonNull
-  public String getHostId() {
-    return hostId;
-  }
-
-  public void setHostId(@NonNull String hostId) {
-    this.hostId = hostId;
-  }
-
-  public int getMaxUserNum() {
-    return maxUserNum;
-  }
-
-  public void setMaxUserNum(int maxUserNum) {
-    this.maxUserNum = maxUserNum;
-  }
-
   public int getCurUserNum() {
     return curUserNum;
   }
@@ -134,24 +120,15 @@ public class ChatGroup implements Serializable, Data {
   }
 
   @NonNull
-  public Timestamp getStartDateTime() {
-    return startDateTime;
+  public Timestamp getCreatedAt() {
+    return createdAt;
   }
 
-  public void setStartDateTime(@NonNull Timestamp startDateTime) {
-    this.startDateTime = startDateTime;
+  public void setCreatedAt(@NonNull Timestamp createdAt) {
+    this.createdAt = createdAt;
   }
 
   @NonNull
-  public String getKaraokeId() {
-    return karaokeId;
-  }
-
-  public void setKaraokeId(@NonNull String karaokeId) {
-    this.karaokeId = karaokeId;
-  }
-
-  @Override
   public String getPrimaryKey() {
     return getId();
   }
@@ -159,5 +136,22 @@ public class ChatGroup implements Serializable, Data {
   @Override
   public void setPrimaryKey(String key) {
     this.id = key;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ChatGroup)) {
+      return false;
+    }
+    ChatGroup that = (ChatGroup) o;
+    return getId().equals(that.getId());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
   }
 }

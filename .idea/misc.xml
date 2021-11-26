@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/drawable-v24/arrow_left.xml" value="0.2328125" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/drawable-v24/bubble_left.xml" value="0.16354166666666667" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/drawable-v24/bubble_left_tail.xml" value="0.21927083333333333" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/drawable-v24/bubble_right.xml" value="0.21927083333333333" />
@@ -12,16 +13,27 @@
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/font/bold_font.xml" value="0.18055555555555555" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_chat.xml" value="0.1287037037037037" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_chat_group.xml" value="0.13425925925925927" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_create_group.xml" value="0.21666666666666667" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_group_detail.xml" value="0.21666666666666667" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_home2.xml" value="0.15989583333333332" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_main.xml" value="0.19947916666666668" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/chat_group.xml" value="0.2953125" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/fragment_chat_group.xml" value="0.1" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/fragment_home.xml" value="0.3619791666666667" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/fragment_notifications.xml" value="0.3619791666666667" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/my_chat.xml" value="0.33" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/my_chat_ellipsed.xml" value="0.5" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/your_chat.xml" value="0.33" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/layout/your_chat_ellipsed.xml" value="0.5" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/menu/bottom_nav.xml" value="0.1" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3619791666666667" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19375" />
         <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19375" />
+        <entry key="..\:/gitkraken_project/ChatVer5/app/src/main/res/xml/file_path.xml" value="0.1" />
       </map>
     </option>
   </component>

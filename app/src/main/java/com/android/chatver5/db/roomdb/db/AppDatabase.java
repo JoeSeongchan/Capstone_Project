@@ -8,18 +8,18 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-import com.android.chatver5.db.data.BriefChatGroup;
 import com.android.chatver5.db.data.Chat;
 import com.android.chatver5.db.data.ChatGroup;
+import com.android.chatver5.db.data.Party;
 import com.android.chatver5.db.data.TypeConverter;
 import com.android.chatver5.db.roomdb.dao.BriefChatGroupDao;
 import com.android.chatver5.db.roomdb.dao.ChatDao;
-import com.android.chatver5.db.roomdb.dao.ChatGroupDao;
+import com.android.chatver5.db.roomdb.dao.PartyDao;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 // exportSchema = setting for data migration.
-@Database(entities = {ChatGroup.class, BriefChatGroup.class,
+@Database(entities = {Party.class, ChatGroup.class,
     Chat.class}, version = 1, exportSchema = false)
 @TypeConverters({TypeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -44,7 +44,7 @@ public abstract class AppDatabase extends RoomDatabase {
           // If you want to start with more words, just add them.
           BriefChatGroupDao briefChatGroupDao = INSTANCE.briefChatGroupDao();
           // briefChatGroupDao.insert(new BriefChatGroup());
-          briefChatGroupDao.insert(new BriefChatGroup("dum01", "dum01", "dum01"));
+          briefChatGroupDao.insert(new ChatGroup("dum01", "dum01", "dum01"));
           // we can add several chat group data.
           // ex) chatGroupDao.insert(...)
         });
@@ -66,7 +66,7 @@ public abstract class AppDatabase extends RoomDatabase {
     return INSTANCE;
   }
 
-  public abstract ChatGroupDao chatGroupDao();
+  public abstract PartyDao chatGroupDao();
 
   public abstract BriefChatGroupDao briefChatGroupDao();
 

@@ -7,7 +7,7 @@
   android:layout_height="match_parent"
   android:background="@color/chatRoomBackground"
   android:weightSum="1"
-  tools:context=".activity.RegisterActivity">
+  tools:context=".activity.login.RegisterActivity">
   <!--회원가입 title.-->
   <TextView
     android:id="@+id/tvTitle"
@@ -46,7 +46,7 @@
           android:text="@string/tv_name" />
         <!--입력창.-->
         <EditText
-          android:id="@+id/etName"
+          android:id="@+id/et_name_register"
           style="@style/et_oneItemInput_register"
           android:hint="@string/hint_name"
           android:text="@string/def_name" />
@@ -60,7 +60,7 @@
           android:text="@string/tv_nick" />
         <!--입력창.-->
         <EditText
-          android:id="@+id/etNick"
+          android:id="@+id/et_nick_register"
           style="@style/et_oneItemInput_register"
           android:hint="@string/hint_nick"
           android:text="@string/def_nick" />
@@ -74,7 +74,7 @@
           android:text="@string/tv_email" />
         <!--입력창.-->
         <EditText
-          android:id="@+id/etEmail"
+          android:id="@+id/et_email_register"
           style="@style/et_oneItemInput_register"
           android:hint="@string/hint_email"
           android:inputType="textEmailAddress"
@@ -89,7 +89,7 @@
           android:text="@string/tv_birth" />
         <!--표시.-->
         <TextView
-          android:id="@+id/tvBirthInput"
+          android:id="@+id/tv_birthInput_register"
           style="@style/tv_oneItemInput_register"
           android:text="@string/inputBirth"
           android:textColor="@color/blackTextColor" />
@@ -103,7 +103,7 @@
           android:text="@string/tv_phone" />
         <!--입력창.-->
         <EditText
-          android:id="@+id/etPhone"
+          android:id="@+id/et_phone_register"
           style="@style/et_oneItemInput_register"
           android:hint="@string/hint_pwd"
           android:inputType="phone"
@@ -118,7 +118,7 @@
           android:text="@string/tv_pwd" />
         <!--입력창.-->
         <EditText
-          android:id="@+id/etPwd"
+          android:id="@+id/et_pwd_register"
           style="@style/et_oneItemInput_register"
           android:hint="@string/hint_pwd"
           android:inputType="textPassword"
@@ -133,7 +133,7 @@
           android:text="@string/tv_pwd_check" />
         <!--입력창.-->
         <EditText
-          android:id="@+id/etPwdCheck"
+          android:id="@+id/et_pwdCheck_register"
           style="@style/et_oneItemInput_register"
           android:hint="@string/hint_pwd_check"
           android:inputType="textPassword"
@@ -143,7 +143,7 @@
   </ScrollView>
 
   <androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/btnRegister"
+    android:id="@+id/btn_register_register"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
