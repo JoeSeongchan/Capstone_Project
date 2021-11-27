@@ -2,12 +2,12 @@ package com.example.detailgrouptest.DB.entity.creategroup;
 
 import android.widget.Button;
 
-public class ButtonRemade {
+public class ButtonRecordingClick {
 
   public final Button button;
   private boolean isClicked = false;
 
-  public ButtonRemade(Button button) {
+  public ButtonRecordingClick(Button button) {
     this.button = button;
   }
 

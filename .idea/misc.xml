@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Administrator/Desktop/gitkraken/Capstone_Project/app/src/main/res/layout/activity_create_group.xml" value="0.24610591900311526" />
+        <entry key="..\:/Users/Administrator/Desktop/gitkraken/Capstone_Project/app/src/main/res/layout/create_group.xml" value="0.33" />
+        <entry key="..\:/Users/Administrator/Desktop/gitkraken/Capstone_Project/app/src/main/res/layout/group_detail.xml" value="0.13148148148148148" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/button_back.xml" value="0.1" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/selector_button.xml" value="0.1" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/shape_clicked.xml" value="0.1" />

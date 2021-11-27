@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.detailgrouptest"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -28,6 +28,9 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+    viewBinding {
+        enabled = true
     }
 }
 
@@ -55,8 +58,6 @@ dependencies {
     //firebase
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
     implementation 'com.google.firebase:firebase-analytics'
-
-
 
 
 }

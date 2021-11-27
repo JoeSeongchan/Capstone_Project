@@ -1,2 +1,6 @@
-package com.example.detailgrouptest.DB.entity;public class User {
+package com.example.detailgrouptest.DB.entity;
+
+public class User {
+
+
 }
