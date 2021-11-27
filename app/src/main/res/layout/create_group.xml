@@ -23,14 +23,18 @@
                 android:text="모임 제목" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/groupname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/groupnameText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="모임 제목을 입력해주세요!" />
@@ -60,35 +64,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
-                        android:id="@+id/button2"
+                    <android.widget.Button
+                        android:id="@+id/genre01"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
+                        android:textColor="@color/black"
                         android:layout_margin="1dp"
                         android:paddingLeft="0dp"
                         android:paddingRight="0dp"
                         android:text="자유롭게" />
 
-                    <Button
-                        android:id="@+id/button3"
+                    <android.widget.Button
+                        android:id="@+id/genre02"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:paddingLeft="0dp"
                         android:paddingRight="0dp"
                         android:text="인기차트" />
 
-                    <Button
-                        android:id="@+id/button4"
+                    <android.widget.Button
+                        android:id="@+id/genre03"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="발라드" />
 
-                    <Button
-                        android:id="@+id/button5"
+                    <android.widget.Button
+                        android:id="@+id/genre04"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="가요" />
 
@@ -98,31 +107,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
-                        android:id="@+id/button8"
+                    <android.widget.Button
+                        android:id="@+id/genre05"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="POP" />
 
-                    <Button
-                        android:id="@+id/button6"
+                    <android.widget.Button
+                        android:id="@+id/genre06"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="트로트" />
 
-                    <Button
-                        android:id="@+id/button7"
+                    <android.widget.Button
+                        android:id="@+id/genre07"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="힙합" />
 
-                    <Button
-                        android:id="@+id/button9"
+                    <android.widget.Button
+                        android:id="@+id/genre08"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="J-POP" />
                 </TableRow>
@@ -131,31 +144,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
-                    <Button
-                        android:id="@+id/button24"
+                    <android.widget.Button
+                        android:id="@+id/genre09"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="장르1" />
 
-                    <Button
-                        android:id="@+id/button25"
+                    <android.widget.Button
+                        android:id="@+id/genre10"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="장르2" />
 
-                    <Button
-                        android:id="@+id/button26"
+                    <android.widget.Button
+                        android:id="@+id/genre11"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="장르3" />
 
-                    <Button
-                        android:id="@+id/button27"
+                    <android.widget.Button
+                        android:id="@+id/genre12"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:text="그 외" />
                 </TableRow>
@@ -195,28 +212,31 @@
                         android:layout_weight="1"
                         android:text="성별" />
 
-                    <Button
-                        android:id="@+id/button10"
+                    <android.widget.Button
+                        android:id="@+id/gender_free"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:paddingLeft="0dp"
                         android:paddingRight="0dp"
                         android:layout_weight="1"
                         android:text="성별 자유" />
 
-                    <Button
-                        android:id="@+id/button11"
+                    <android.widget.Button
+                        android:id="@+id/gender_M"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:text="남자만" />
 
-                    <Button
-                        android:id="@+id/button12"
+                    <android.widget.Button
+                        android:id="@+id/gender_F"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:text="여자만" />
@@ -250,6 +270,8 @@
                         android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:textColor="@color/black"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
                         android:text="나이 자유"
                         tools:ignore="MissingConstraints"/>
 
@@ -268,27 +290,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <Button
-                        android:id="@+id/button21"
+                    <android.widget.Button
+                        android:id="@+id/age_early"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:background="@drawable/selector_button"
                         android:layout_column="1"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:text="초반\n(0~3)" />
 
-                    <Button
-                        android:id="@+id/button22"
+                    <android.widget.Button
+                        android:id="@+id/age_mid"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:text="중반\n(4~6)" />
 
-                    <Button
-                        android:id="@+id/button23"
+                    <android.widget.Button
+                        android:id="@+id/age_late"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:background="@drawable/selector_button"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
                         android:text="후반\n(7~9)" />
@@ -464,13 +489,19 @@
                 android:background="?android:attr/listDivider" />
 
             <Button
-                android:id="@+id/button20"
+                android:id="@+id/createGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginTop="20dp"
                 android:text="방 만들기" />
+
+            <TextView
+                android:id="@+id/errorMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="에러메세지 테스트" />
 
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
