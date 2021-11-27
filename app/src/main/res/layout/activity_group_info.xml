@@ -6,7 +6,7 @@
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/groupDetail_tv_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="모임제목"
@@ -31,13 +31,13 @@
                 android:background="?android:attr/listDivider" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/groupDetail_tv_condition1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="#참가조건 #성별자유 #나이자유" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/groupDetail_tv_condition2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="#장르태그 #뭐이런식으로 #고대로받아다 #앞에샵만붙이면?" />
@@ -83,7 +83,7 @@
                         android:text="모임 장소" />
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/groupDetail_tv_karaokeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAlignment="textEnd"
@@ -105,7 +105,7 @@
                         android:text="모임 일시" />
 
                     <TextView
-                        android:id="@+id/textView21"
+                        android:id="@+id/groupDetail_tv_partyTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAlignment="textEnd"
@@ -146,7 +146,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/groupDetail_btn_done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
