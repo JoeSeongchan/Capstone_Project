@@ -10,10 +10,7 @@
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_create_group.xml" value="0.4" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_group_info.xml" value="0.264" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_main.xml" value="0.264" />
-<<<<<<< Updated upstream
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_map.xml" value="0.1" />
-=======
->>>>>>> Stashed changes
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/after_party.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/bottom_nav.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/btn_group_member.xml" value="0.15443840579710144" />
@@ -21,6 +18,7 @@
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/frag_test1.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_dashboard.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_home.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_map.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_notifications.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/group_detail.xml" value="0.264" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/popup.xml" value="0.18432971014492755" />
