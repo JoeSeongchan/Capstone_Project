@@ -67,7 +67,6 @@ public class AudioAdapter extends RecyclerView.Adapter {
 
         String uriName = String.valueOf(title.get(position));
 
-
         myViewHolder.audioTitle.setText(uriName);
     }
 
