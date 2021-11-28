@@ -3,15 +3,12 @@ package com.example.capstone;
 import static android.content.ContentValues.TAG;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,13 +38,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
-public class ShowMyProfileActivity extends AppCompatActivity {
-    private TextView username, userid, mainsinger, song, profile, profilename, evaluate, eval1, eval2, eval3, eval4, favoritesongs;
-    private ImageButton add, option;
+public class ShowYourProfileActivity extends AppCompatActivity {
+    private TextView username, userid,  profile,  eval1, eval2, eval3, eval4;
+
 
     /**xml 변수*/
-    ImageButton audioRecordImageBtn;
-    TextView audioRecordText;
+
 
     /**오디오 파일 관련 변수*/
 
@@ -74,41 +70,30 @@ public class ShowMyProfileActivity extends AppCompatActivity {
     private int result=3;
 
     //로그인 된 유저 id
-    protected String id = "IOxZt7qFPxdE93PNtElzSztmYpP2";
+    protected String id = "6kCCwRjSjOa7I4458HvOScFVJ423";
 
 
     // 데이터베이스
     protected FirebaseFirestore db = FirebaseFirestore.getInstance();
     protected FirebaseStorage storage = FirebaseStorage.getInstance();
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_profile);
         permissionCheck();
+        setContentView(R.layout.activity_your_profile);
         init();
         Toast.makeText(this, "init 완료", Toast.LENGTH_SHORT).show();
         showprofile();
-        click();
-        changeprofile();
-    }
-
-    private void changeprofile() {
-
     }
 
     private void init() {
-        username = findViewById(R.id.username);
-        userid = findViewById(R.id.userid);
-        profile = findViewById(R.id.profile);
-        recyclerView = findViewById(R.id.recycler_songs);
-        evaluate = findViewById(R.id.evaluate);
-        eval1 = findViewById(R.id.eval1c);
-        eval2 = findViewById(R.id.eval2c);
-        eval3 = findViewById(R.id.eval3c);
-        eval4 = findViewById(R.id.eval4c);
-        add = findViewById(R.id.add);
-        option = findViewById(R.id.option);
+        userid = findViewById(R.id.youract_tv_userid);
+        profile = findViewById(R.id.youract_tv_profile);
+        recyclerView = findViewById(R.id.youract_recycler_songs);
+        eval1 = findViewById(R.id.youract_tv_eval1c);
+        eval2 = findViewById(R.id.youract_tv_eval2c);
+        eval3 = findViewById(R.id.youract_tv_eval3c);
+        eval4 = findViewById(R.id.youract_tv_eval4c);
 
 
         // 리사이클러뷰
@@ -224,7 +209,6 @@ public class ShowMyProfileActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             Log.d(TAG, document.getId() + " => " + document.getData());
-                            username.setText(document.getData().get("nickname").toString());
                             userid.setText(document.getData().get("name").toString());
                             profile.setText("\n나이: " + Integer.toString(result) + "\n성별: " + document.getData().get("gender").toString() +
                                     "\n활동지역: " + document.getData().get("primelocal").toString() + "\n선호하는 장르: " + document.getData().get("primegenre").toString());
@@ -238,26 +222,6 @@ public class ShowMyProfileActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void click() {
-        add.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SelectUploadOptionActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        option.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), option.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 
     private void playAudio(String file) {
@@ -295,6 +259,7 @@ public class ShowMyProfileActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
         }
     }
+
 
 
 }

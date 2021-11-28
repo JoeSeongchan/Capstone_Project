@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/userid"
+            android:id="@+id/youract_tv_userid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
@@ -27,15 +27,15 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_songs"
+            android:id="@+id/youract_recycler_songs"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:layout_below="@id/userid"
+            android:layout_below="@id/youract_tv_userid"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toTopOf="@id/profile"
+            app:layout_constraintBottom_toTopOf="@id/youract_tv_profile"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -44,10 +44,10 @@
 
 
         <TextView
-            android:id="@+id/profile"
+            android:id="@+id/youract_tv_profile"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_below="@id/recycler_songs"
+            android:layout_below="@id/youract_recycler_songs"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
@@ -58,10 +58,10 @@
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/profilename"
+            android:id="@+id/youract_tv_profilename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/profile"
+            android:layout_alignTop="@id/youract_tv_profile"
             android:layout_centerHorizontal="true"
             android:text="Profile"
             android:textColor="#333333"
@@ -69,10 +69,10 @@
 
 
         <TextView
-            android:id="@+id/evaluate"
+            android:id="@+id/youract_tv_evaluate"
             android:layout_width="match_parent"
             android:layout_height="420dp"
-            android:layout_below="@id/profile"
+            android:layout_below="@id/youract_tv_profile"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
@@ -86,17 +86,17 @@
             android:id="@+id/eval1"
             android:layout_width="145dp"
             android:layout_height="145dp"
-            android:layout_below="@id/profile"
-            android:layout_alignLeft="@id/evaluate"
+            android:layout_below="@id/youract_tv_profile"
+            android:layout_alignLeft="@id/youract_tv_evaluate"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="80dp"
             android:background="@drawable/eval1" />
 
         <TextView
-            android:id="@+id/eval1c"
+            android:id="@+id/youract_tv_eval1c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/evaluate"
+            android:layout_alignLeft="@id/youract_tv_evaluate"
             android:layout_marginLeft="85dp"
             android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/eval1"
@@ -109,17 +109,17 @@
             android:id="@+id/eval2"
             android:layout_width="145dp"
             android:layout_height="145dp"
-            android:layout_below="@id/profile"
-            android:layout_alignRight="@id/evaluate"
+            android:layout_below="@id/youract_tv_profile"
+            android:layout_alignRight="@id/youract_tv_evaluate"
             android:layout_marginTop="80dp"
             android:layout_marginRight="30dp"
             android:background="@drawable/eval2" />
 
         <TextView
-            android:id="@+id/eval2c"
+            android:id="@+id/youract_tv_eval2c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@id/evaluate"
+            android:layout_alignRight="@id/youract_tv_evaluate"
             android:layout_marginRight="85dp"
             android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/eval1"
@@ -133,17 +133,17 @@
             android:layout_width="145dp"
             android:layout_height="145dp"
             android:layout_below="@id/eval1"
-            android:layout_alignLeft="@id/evaluate"
+            android:layout_alignLeft="@id/youract_tv_evaluate"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/eval3"
             />
 
         <TextView
-            android:id="@+id/eval3c"
+            android:id="@+id/youract_tv_eval3c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/evaluate"
+            android:layout_alignLeft="@id/youract_tv_evaluate"
             android:layout_marginLeft="85dp"
             android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/eval3"
@@ -156,17 +156,17 @@
             android:layout_width="145dp"
             android:layout_height="145dp"
             android:layout_below="@id/eval2"
-            android:layout_alignRight="@id/evaluate"
+            android:layout_alignRight="@id/youract_tv_evaluate"
             android:layout_marginRight="30dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/eval1"
             />
 
         <TextView
-            android:id="@+id/eval4c"
+            android:id="@+id/youract_tv_eval4c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@id/evaluate"
+            android:layout_alignRight="@id/youract_tv_evaluate"
             android:layout_marginRight="85dp"
             android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/eval3"
