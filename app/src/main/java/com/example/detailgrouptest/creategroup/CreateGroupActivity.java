@@ -49,8 +49,15 @@ public class CreateGroupActivity extends AppCompatActivity {
         .inflate(getLayoutInflater());
     super.onCreate(savedInstanceState);
     setContentView(binding.getRoot());
+    getKaraokeInfo();
     setDb();
     setUi();
+  }
+
+  private void getKaraokeInfo() {
+    Intent receive_intent = getIntent();
+    karaokeId = receive_intent.getStringExtra("KaraokeID");
+    karaokeName = receive_intent.getStringExtra("KaraokeNAME");
   }
 
   private void setDb() {

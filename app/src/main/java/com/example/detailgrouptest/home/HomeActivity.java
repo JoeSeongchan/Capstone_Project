@@ -36,26 +36,26 @@ public class HomeActivity extends AppCompatActivity implements OnPartyItemClickL
   private static final int ITEM_SHOW_LIMIT = 5;
   // 여기서부터는 데이터베이스
   protected FirebaseFirestore db = FirebaseFirestore.getInstance();
+  BottomNavigationView bottomNavigationView;
   private BottomNavigationView bottomNav; // 바텀 네비게이션 뷰
   private FragmentManager fm;
   private FragmentTransaction ft;
-
   //리사이클러 뷰 관련
   private boolean isScrolling = false;
   private boolean isLastItemReached = false;
   private DocumentSnapshot lastVisible;
-
   private HomePartyAdapter adapter;
   private ActivityHomeBinding binding;
-
 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     binding = ActivityHomeBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+
     recyclerv();
     initrest();
   }
+
 
   private void recyclerv() {
     adapter = new HomePartyAdapter(new HomePartyDiff(), this);

@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
-    
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/TESTHOME"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TEST"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/TEST2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TEST2"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TESTHOME" />
+    <FrameLayout
+      android:id="@+id/frame_layout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginBottom="?attr/actionBarSize"/>
 
-</LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/main_bnv_bottomNavi"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      app:menu="@menu/bottom_nav_menu"
+      tools:layout_editor_absoluteX="16dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
