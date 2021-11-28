@@ -25,8 +25,10 @@
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layout/activity_create_group.xml" value="0.3619791666666667" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layout/activity_group_info.xml" value="0.19895833333333332" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layout/activity_show_party_info.xml" value="0.33" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layout/fragment_notifications.xml" value="0.196875" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layout/search_group.xml" value="0.19270833333333334" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layout/view_btn_member.xml" value="0.35572916666666665" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/drawable/home_refresh.xml" value="0.209375" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/drawable/ic_baseline_home_24.xml" value="0.31851851851851853" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/drawable/nav_map.xml" value="0.31851851851851853" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/drawable/nav_message.xml" value="0.31851851851851853" />
@@ -37,6 +39,11 @@
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/layout/item_party_main.xml" value="0.1" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/menu/bottom_nav.xml" value="0.35572916666666665" />
         <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/home/menu/bottom_nav_menu.xml" value="0.32233009708737864" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/partyinfo/layout/item_member_partyInfo.xml" value="0.19322916666666667" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/showpartyinfo/drawable/btn_host_member.xml" value="0.209375" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/showpartyinfo/drawable/btn_member.xml" value="0.209375" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/showpartyinfo/layout/activity_show_party_info.xml" value="0.196875" />
+        <entry key="..\:/gitkraken_project/capstone_project_peek_other_member/app/src/main/res/layouts/showpartyinfo/layout/item_member_show_party_info.xml" value="0.19322916666666667" />
       </map>
     </option>
   </component>

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.detailgrouptest.R;
 import com.example.detailgrouptest.databinding.ItemPartyMainBinding;
 import com.example.detailgrouptest.db.entity.Party;
-import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.EventListener;
@@ -54,11 +53,10 @@ public class HomePartyViewHolder extends RecyclerView.ViewHolder {
         .getString(R.string.homePartyItem_tv_startDateTime,
             calendarForDate.get(Calendar.MONTH),
             calendarForDate.get(Calendar.DAY_OF_MONTH),
-            party.meetingStartTime.getHour(),
-            party.meetingStartTime.getMinute()));
+            party.meetingStartTime.hour,
+            party.meetingStartTime.minutes));
     LocalTime now = LocalTime.now();
-    long duration = Duration.between(now, party.meetingStartTime).toMinutes();
-    party.meetingStartTime.compareTo(LocalTime.now());
+    long duration = party.meetingStartTime.subtract(now);
     binding.homePartyItemTvTimeWarning.setText(context
         .getString(R.string.homePartyItem_tv_timeWarning,
             duration

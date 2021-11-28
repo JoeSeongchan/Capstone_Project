@@ -16,9 +16,9 @@ import com.example.detailgrouptest.db.entity.Party;
 import com.example.detailgrouptest.db.entity.Party.AgeDetail;
 import com.example.detailgrouptest.db.entity.Party.Gender;
 import com.example.detailgrouptest.db.entity.Party.Genre;
+import com.example.detailgrouptest.db.entity.Party.MyTime;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,8 +38,8 @@ public class CreateGroupActivity extends AppCompatActivity {
   private Gender gender = null;
   private int age = 0;
   private Date meetingDate = null;
-  private LocalTime startTime = null;
-  private LocalTime endTime = null;
+  private MyTime startTime = null;
+  private MyTime endTime = null;
   private int memMax = 0;
   private String karaokeId = null;
   private String karaokeName = null;
@@ -108,6 +108,7 @@ public class CreateGroupActivity extends AppCompatActivity {
       binding.createGroupBtnGenrePop.setSelected(false);
       binding.createGroupBtnGenreTop.setSelected(false);
       binding.createGroupBtnGenreFree.setSelected(true);
+      genreList.clear();
       genreList.add(Genre.FREE);
     });
 
@@ -328,7 +329,7 @@ public class CreateGroupActivity extends AppCompatActivity {
               (view, hourOfDay, minute) -> {
                 binding.createGroupBtnSelectStartTime
                     .setText(String.format("%02d:%02d", hourOfDay, minute));
-                startTime = LocalTime.of(hourOfDay, minute);
+                startTime = new MyTime(hourOfDay, minute);
               }, mHour, mMin, false);
       timePickerDialog.show();
     });
@@ -341,7 +342,7 @@ public class CreateGroupActivity extends AppCompatActivity {
           (view, hourOfDay, minute) -> {
             binding.createGroupBtnSelectEndTime
                 .setText(String.format("%02d:%02d", hourOfDay, minute));
-            endTime = LocalTime.of(hourOfDay, minute);
+            endTime = new MyTime(hourOfDay, minute);
           }, mHour, mMin, false);
       timePickerDialog.show();
     });
@@ -395,7 +396,8 @@ public class CreateGroupActivity extends AppCompatActivity {
   }
 
   private void writeNewGroup() {
-    Party party = new Party(hostId,
+    Party party = new Party(
+        hostId,
         groupName,
         genreList,
         gender,

@@ -18,6 +18,7 @@ public class HomePartyAdapter extends ListAdapter<Party, HomePartyViewHolder> {
       @NonNull OnPartyItemClickListener onPartyItemClickListener) {
     super(diffCallback);
     this.setHasStableIds(true);
+    this.onPartyItemClickListener = onPartyItemClickListener;
   }
 
   @NonNull

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
+  android:padding="20dp">
 
     <TextView
         android:id="@+id/showPartyInfo_tv_title"
@@ -153,14 +154,12 @@
                       android:layout_height="wrap_content"
                       android:text="참가자 리스트" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                      android:background="#ECADB5"
-                      android:textAllCaps="false"
-                      android:layout_marginVertical="5dp"
-                      android:id="@+id/showPartyInfo_btn_hostMember"
+                    <androidx.recyclerview.widget.RecyclerView
+                      android:id="@+id/showPartyInfo_rv_memberList"
                       android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="@string/showPartyInfo_btn_hostMember" />
+                      android:layout_height="match_parent"
+                      tools:listitem="@layout/item_member_show_party_info"
+                      />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
