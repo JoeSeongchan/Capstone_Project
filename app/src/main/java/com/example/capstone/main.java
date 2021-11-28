@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.AbsListView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,7 @@ public class main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         recyclerv();
+        initrest();
     }
 
     private void recyclerv() {
@@ -147,6 +149,12 @@ public class main extends AppCompatActivity {
                 });
     }
 
-
-
+    private void initrest(){
+        findViewById(R.id.refresh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerv();
+            }
+        });
+    }
 }

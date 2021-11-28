@@ -33,17 +33,26 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginTop="80dp"
+            android:layout_weight="1"
             android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/list_row_main"/>
+            tools:listitem="@layout/list_row_main" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/refresh"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/refresh_24"
+        android:layout_above="@+id/bottomNavi"
+        android:layout_alignParentRight="true"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavi"
