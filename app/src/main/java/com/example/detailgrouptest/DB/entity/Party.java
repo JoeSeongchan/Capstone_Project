@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Party {
 
-  public String pathId;
   public String hostID;
   public String groupName;
   public List<Genre> genreList;
@@ -40,14 +39,6 @@ public class Party {
     this.maxMemberNum = maxMemberNum;
     this.meetingStartTime = meetingStartTime;
     this.meetingEndTime = meetingEndTime;
-  }
-
-  public String getPathId() {
-    return pathId;
-  }
-
-  public void setPathId(String pathId) {
-    this.pathId = pathId;
   }
 
   public int getCurMemberNum() {
@@ -156,7 +147,7 @@ public class Party {
   }
 
   public enum AgeDetail {
-    EARLY, MID, LATE
+    EARLY, MID, LATE, FREE
   }
 
   public enum Genre {

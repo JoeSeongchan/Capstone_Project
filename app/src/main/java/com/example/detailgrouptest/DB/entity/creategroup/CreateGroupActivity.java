@@ -4,12 +4,11 @@ import static android.content.ContentValues.TAG;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
-import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.detailgrouptest.DB.entity.Party;
 import com.example.detailgrouptest.DB.entity.Party.AgeDetail;
@@ -17,10 +16,10 @@ import com.example.detailgrouptest.DB.entity.Party.Gender;
 import com.example.detailgrouptest.DB.entity.Party.Genre;
 import com.example.detailgrouptest.R;
 import com.example.detailgrouptest.databinding.ActivityCreateGroupBinding;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -30,43 +29,52 @@ import java.util.Optional;
 
 public class CreateGroupActivity extends AppCompatActivity {
 
-  private ActivityCreateGroupBinding binding = ActivityCreateGroupBinding
-      .inflate(getLayoutInflater());
-  private String hostId = "";
+  private final List<Genre> genreList = new ArrayList<>();
+  private final List<AgeDetail> ageDetail = new ArrayList<>();
+  private ActivityCreateGroupBinding binding;
+  private String hostId = "dummy_host_id";
   private FirebaseFirestore fireDb;
-  private String groupName = "";
-  private List<Genre> genreList;
-  private Gender gender;
+  private String groupName = null;
+  private Gender gender = null;
   private int age = 0;
-  private List<AgeDetail> ageDetail;
-  private Date meetingDate;
-  private boolean[] isError;
-  private LocalTime startTime;
-  private LocalTime endTime;
-  private int memMax;
-  private String karaokeId;
-  private String karaokeName;
+  private Date meetingDate = null;
+  private LocalTime startTime = null;
+  private LocalTime endTime = null;
+  private int memMax = 0;
+  private String karaokeId = null;
+  private String karaokeName = null;
 
   public void onCreate(Bundle savedInstanceState) {
+    binding = ActivityCreateGroupBinding
+        .inflate(getLayoutInflater());
     super.onCreate(savedInstanceState);
     setContentView(binding.getRoot());
-
-    TextInputEditText titleInputText = binding.createGroupEtGroupTitle;
-
-    // 최대 글자 수 설정.
-    binding.createGroupTilGroupTitle.setCounterEnabled(true);
-    binding.createGroupTilGroupTitle.setCounterMaxLength(10);
-
-    // db 설정.
-    fireDb = FirebaseFirestore.getInstance();
-
+    setDb();
     setUi();
+  }
 
+  private void setDb() {
+    fireDb = FirebaseFirestore.getInstance();
   }
 
   private void setUi() {
+    setPartyTitleLayout();
+    setGenreBtnClickListener();
+    setGenderBtnClickListener();
+    setAgeBtnClickListener();
+    setCalendarClickListener();
+    setTimeClickListener();
+    setMemberMaxNumClickListener();
+    setCreatePartyBtnClickListener();
+    getKaraokeIdFromFormerActivity();
+  }
+
+  private void setPartyTitleLayout() {
+    // party 제목 입력창 최대 글자 수 설정.
+    binding.createGroupTilGroupTitle.setCounterEnabled(true);
+    binding.createGroupTilGroupTitle.setCounterMaxLength(10);
     binding.createGroupEtGroupTitle.addTextChangedListener(new TextWatcher() {
-      TextInputLayout layout = binding.createGroupTilGroupTitle;
+      final TextInputLayout layout = binding.createGroupTilGroupTitle;
 
       @Override
       public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,44 +94,35 @@ public class CreateGroupActivity extends AppCompatActivity {
         }
       }
     });
-    setGenreBtnClickListener();
-    setGenderBtnClickListener();
-    setAgeBtnClickListener();
-    setCalendarClickListener();
-    setTimeClickListener();
-    setMemberMaxNumClickListener();
-    setCreatePartyBtnClickListener();
-    getKaraokeIdFromFormerActivity();
   }
 
-  // '모든 장르' 버튼 클릭한 경우,
-  private void onClickGenreAll(View view) {
-    // 모든 버튼 초기화.
-    binding.createGroupBtnGenreBalad.setSelected(false);
-    binding.createGroupBtnGenreHiphop.setSelected(false);
-    binding.createGroupBtnGenreJpop.setSelected(false);
-    binding.createGroupBtnGenreOldSong.setSelected(false);
-    binding.createGroupBtnGenreNormalSong.setSelected(false);
-    binding.createGroupBtnGenreOther.setSelected(false);
-    binding.createGroupBtnGenrePop.setSelected(false);
-    binding.createGroupBtnGenreTop.setSelected(false);
-    genreList.add(Genre.FREE);
-  }
-
+  // 장르 버튼 클릭한 경우,
   private void setGenreBtnClickListener() {
-    binding.createGroupBtnGenreFree.setOnClickListener(this::onClickGenreAll);
+    binding.createGroupBtnGenreFree.setOnClickListener(v -> {
+      binding.createGroupBtnGenreBalad.setSelected(false);
+      binding.createGroupBtnGenreHiphop.setSelected(false);
+      binding.createGroupBtnGenreJpop.setSelected(false);
+      binding.createGroupBtnGenreOldSong.setSelected(false);
+      binding.createGroupBtnGenreNormalSong.setSelected(false);
+      binding.createGroupBtnGenreOther.setSelected(false);
+      binding.createGroupBtnGenrePop.setSelected(false);
+      binding.createGroupBtnGenreTop.setSelected(false);
+      binding.createGroupBtnGenreFree.setSelected(true);
+      genreList.add(Genre.FREE);
+    });
 
     binding.createGroupBtnGenreBalad.setOnClickListener(v -> {
       // 기존에 사용자가 버튼을 이미 클릭한 경우,
       if (binding.createGroupBtnGenreBalad.isSelected()) {
-        // select 해제.
+        // 해당 버튼 select 해제.
         binding.createGroupBtnGenreBalad.setSelected(false);
         // balad genre 제거.
         genreList.remove(Genre.BALAD);
       }
       // 사용자가 처음 버튼을 클릭한 경우
       else {
-        // select 설정.
+        binding.createGroupBtnGenreFree.setSelected(false);
+        // 해당 버튼 select 설정.
         binding.createGroupBtnGenreBalad.setSelected(true);
         // free genre 해제.
         genreList.remove(Genre.FREE);
@@ -136,6 +135,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenreHiphop.setSelected(false);
         genreList.remove(Genre.HIPHOP);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenreHiphop.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.HIPHOP);
@@ -146,6 +146,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenreJpop.setSelected(false);
         genreList.remove(Genre.JPOP);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenreJpop.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.JPOP);
@@ -157,6 +158,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenreOldSong.setSelected(false);
         genreList.remove(Genre.OLD_SONG);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenreOldSong.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.OLD_SONG);
@@ -167,6 +169,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenreNormalSong.setSelected(false);
         genreList.remove(Genre.NORMAL_SONG);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenreNormalSong.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.NORMAL_SONG);
@@ -177,6 +180,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenreOther.setSelected(false);
         genreList.remove(Genre.OTHER);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenreOther.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.OTHER);
@@ -187,6 +191,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenrePop.setSelected(false);
         genreList.remove(Genre.POP);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenrePop.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.POP);
@@ -197,6 +202,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         binding.createGroupBtnGenreTop.setSelected(false);
         genreList.remove(Genre.TOP);
       } else {
+        binding.createGroupBtnGenreFree.setSelected(false);
         binding.createGroupBtnGenreTop.setSelected(true);
         genreList.remove(Genre.FREE);
         genreList.add(Genre.TOP);
@@ -204,6 +210,7 @@ public class CreateGroupActivity extends AppCompatActivity {
     });
   }
 
+  // '성별' 버튼 클릭한 경우,
   private void setGenderBtnClickListener() {
     binding.createGroupBtnGenderFree.setOnClickListener(v -> {
       v.setSelected(true);
@@ -225,11 +232,12 @@ public class CreateGroupActivity extends AppCompatActivity {
     });
   }
 
+  // '나이' 버튼 클릭한 경우,
   private void setAgeBtnClickListener() {
+    binding.createGroupTvAge.setText("나이 자유");
+    // 왼쪽 화살표 버튼 클릭한 경우,
     binding.createGroupBtnAgeLeft.setOnClickListener(v -> {
-      if (age == 0) {
-        binding.createGroupTvAge.setText("나이 자유");
-      } else if (age > 0) {
+      if (age > 0) {
         age -= 10;
         if (age > 0) {
           binding.createGroupTvAge
@@ -243,12 +251,14 @@ public class CreateGroupActivity extends AppCompatActivity {
         }
       }
     });
+    // 오른쪽 화살표 버튼 클릭한 경우,
     binding.createGroupBtnAgeRight.setOnClickListener(v -> {
       if (age < 90) {
         age += 10;
         binding.createGroupTvAge.setText(getString(R.string.createGroup_tv_age, age));
       }
     });
+    // '초반 버튼' 클릭한 경우,
     binding.createGroupBtnAgeEarly.setOnClickListener(v -> {
       if (age == 0) {
         return;
@@ -261,6 +271,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         ageDetail.add(AgeDetail.EARLY);
       }
     });
+    // '중반 버튼' 클릭한 경우,
     binding.createGroupBtnAgeMid.setOnClickListener(v -> {
       if (age == 0) {
         return;
@@ -273,6 +284,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         ageDetail.add(AgeDetail.MID);
       }
     });
+    // '후반 버튼' 클릭한 경우,
     binding.createGroupBtnAgeLate.setOnClickListener(v -> {
       if (age == 0) {
         return;
@@ -287,22 +299,25 @@ public class CreateGroupActivity extends AppCompatActivity {
     });
   }
 
+  // 캘린더 picker 버튼 클릭한 경우,
   private void setCalendarClickListener() {
-    final Calendar c = Calendar.getInstance();
-    int mYear = c.get(Calendar.YEAR);
-    int mMonth = c.get(Calendar.MONTH);
-    int mDay = c.get(Calendar.DAY_OF_MONTH);
+    binding.createGroupBtnSelectDate.setOnClickListener(v -> {
+      final Calendar c = Calendar.getInstance();
+      int mYear = c.get(Calendar.YEAR);
+      int mMonth = c.get(Calendar.MONTH);
+      int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-    DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-        (view, year, month, dayOfMonth) -> {
-          binding.createGroupBtnSelectDate
-              .setText(year + " / " + (month + 1) + " / " + dayOfMonth);
-          meetingDate = new GregorianCalendar(year, month, dayOfMonth).getTime();
-          isError[1] = false;   //선택확인
-        }, mYear, mMonth, mDay);
-    datePickerDialog.show();
+      DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+          (view, year, month, dayOfMonth) -> {
+            binding.createGroupBtnSelectDate
+                .setText(year + " / " + (month + 1) + " / " + dayOfMonth);
+            meetingDate = new GregorianCalendar(year, month, dayOfMonth).getTime();
+          }, mYear, mMonth, mDay);
+      datePickerDialog.show();
+    });
   }
 
+  // 시간 picker 버튼 클릭한 경우,
   private void setTimeClickListener() {
     binding.createGroupBtnSelectStartTime.setOnClickListener(v -> {
       final Calendar c = Calendar.getInstance();
@@ -314,7 +329,6 @@ public class CreateGroupActivity extends AppCompatActivity {
                 binding.createGroupBtnSelectStartTime
                     .setText(String.format("%02d:%02d", hourOfDay, minute));
                 startTime = LocalTime.of(hourOfDay, minute);
-                isError[2] = false;   //선택확인
               }, mHour, mMin, false);
       timePickerDialog.show();
     });
@@ -324,19 +338,16 @@ public class CreateGroupActivity extends AppCompatActivity {
       int mMin = c.get(Calendar.MINUTE);
 
       TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-          new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-              binding.createGroupBtnSelectEndTime
-                  .setText(String.format("%02d:%02d", hourOfDay, minute));
-              endTime = LocalTime.of(hourOfDay, minute);
-              isError[3] = false;   //선택확인
-            }
+          (view, hourOfDay, minute) -> {
+            binding.createGroupBtnSelectEndTime
+                .setText(String.format("%02d:%02d", hourOfDay, minute));
+            endTime = LocalTime.of(hourOfDay, minute);
           }, mHour, mMin, false);
       timePickerDialog.show();
     });
   }
 
+  // 최대 인원 수 버튼 클릭한 경우,
   private void setMemberMaxNumClickListener() {
     binding.createGroupBtnMemberNumLeft.setOnClickListener(v -> {
       if (memMax > 2) {
@@ -353,29 +364,33 @@ public class CreateGroupActivity extends AppCompatActivity {
   }
 
   private void setCreatePartyBtnClickListener() {
-    if (!groupName.isEmpty()) {
-      isError[0] = false;
-    }
-
-    boolean isTotallyError = false;
-    for (boolean b : isError) {
-      isTotallyError = isTotallyError || b;
-    }
-
-    if (isTotallyError) {
-      binding.errorMessage.setText("입력되지 않는 항목이 있습니다.");
-    } else {
-      binding.errorMessage.setText("모임 생성 중");
-      writeNewGroup();
-    }
+    binding.createGroupBtnCreateGroup.setOnClickListener(v -> {
+      if (hostId == null ||
+          groupName == null ||
+          gender == null ||
+          genreList.isEmpty() ||
+          meetingDate == null ||
+          startTime == null ||
+          endTime == null ||
+          memMax == 0 ||
+          karaokeId == null ||
+          karaokeName == null) {
+        binding.createGroupTvErrorMessage.setText("입력되지 않은 항목이 있습니다.");
+      } else {
+        binding.createGroupTvErrorMessage.setText("모임 생성 중");
+        writeNewGroup();
+      }
+    });
   }
 
   private void getKaraokeIdFromFormerActivity() {
     karaokeId = Optional
-        .ofNullable(getIntent().getExtras().getString("KARAOKE_ID"))
+        .ofNullable(getIntent()).map(Intent::getExtras)
+        .map(bundle -> bundle.getString("KARAOKE_ID"))
         .orElse("default_karaoke_id");
     karaokeName = Optional
-        .ofNullable(getIntent().getExtras().getString("KARAOKE_NAME"))
+        .ofNullable(getIntent()).map(Intent::getExtras)
+        .map(bundle -> bundle.getString("KARAOKE_NAME"))
         .orElse("default_karaoke_name");
   }
 
@@ -394,11 +409,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         startTime,
         endTime);
 
-    String autoGeneratedId = fireDb.collection("party_list").document().getId();
-    party.setPathId(autoGeneratedId);
     fireDb.collection("party_list")
-        .document(party.getPathId())
-        .set(party)
+        .add(party)
         .addOnSuccessListener(unused -> Log.d(TAG, "SUCCESS!"))
         .addOnFailureListener(e -> Log.w(TAG, "FAILURE : " + e.getMessage()));
   }
