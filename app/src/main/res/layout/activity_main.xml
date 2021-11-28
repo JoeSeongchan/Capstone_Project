@@ -36,7 +36,7 @@
             android:layout_marginTop="80dp"
             android:layout_weight="1"
             android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/list_row_main" />
+            tools:listitem="@layout/item_party_main" />
 
         <ProgressBar
             android:id="@+id/progress_bar"

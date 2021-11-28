@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".upload_option">
+    tools:context=".SelectUploadOptionActivity">
 
     <!--녹음내역들이 담길 리사이클러뷰-->
     <androidx.recyclerview.widget.RecyclerView

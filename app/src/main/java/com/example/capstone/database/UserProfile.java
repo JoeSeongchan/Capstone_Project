@@ -1,6 +1,6 @@
 package com.example.capstone.database;
 
-public class user_profile {
+public class UserProfile {
     String nickname;
     String name;
     boolean gender;
@@ -9,7 +9,7 @@ public class user_profile {
     String primesong;
     String voicecharac;
 
-    public user_profile(){}
+    public UserProfile(){}
 
     public String getNickname() {
         return nickname;
@@ -56,7 +56,7 @@ public class user_profile {
 
 
     //이거는 그룹을 생성할때 사용하는 부분
-    public user_profile(String nickname, String name,  boolean gender, String primegenre, String primelocal, String primesong, String voicecharac) {
+    public UserProfile(String nickname, String name, boolean gender, String primegenre, String primelocal, String primesong, String voicecharac) {
         this.nickname = nickname;
         this.name = name;
         this.gender = gender;

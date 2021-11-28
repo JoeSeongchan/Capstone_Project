@@ -1,13 +1,13 @@
 package com.example.capstone.database;
 
-public class groupdisplay {
+public class GroupDisplay {
     String local;
     int max;
     int member;
     long starttime;
     String title;
 
-    public groupdisplay(){}
+    public GroupDisplay(){}
 
     public String getLocal() {
         return local;
@@ -43,7 +43,7 @@ public class groupdisplay {
 
 
     //이거는 그룹을 생성할때 사용하는 부분
-    public groupdisplay(String title, String local,  int max, int member, long starttime) {
+    public GroupDisplay(String title, String local, int max, int member, long starttime) {
         this.title = title;
         this.max = max;
         this.local = local;

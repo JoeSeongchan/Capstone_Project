@@ -12,13 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class AudioAdapter extends RecyclerView.Adapter {
     //리사이클러뷰에 넣을 데이터 리스트
     ArrayList<Uri> dataModels;
+    ArrayList<String> title;
     Context context;
+
 
     // 리스너 객체 참조를 저장하는 변수
     private OnIconClickListener listener = null;
@@ -35,9 +36,10 @@ public class AudioAdapter extends RecyclerView.Adapter {
     }
 
     //생성자를 통하여 데이터 리스트
-    public AudioAdapter(Context context, ArrayList<Uri> dataModels) {
+    public AudioAdapter(Context context, ArrayList<Uri> dataModels, ArrayList<String> title) {
         this.dataModels = dataModels;
         this.context = context;
+        this.title = title;
     }
 
     @Override
@@ -63,10 +65,10 @@ public class AudioAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder)holder;
 
-        String uriName = String.valueOf(dataModels.get(position));
-        File file = new File(uriName);
+        String uriName = String.valueOf(title.get(position));
 
-        myViewHolder.audioTitle.setText(file.getName());
+
+        myViewHolder.audioTitle.setText(uriName);
     }
 
 

@@ -24,11 +24,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +41,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
-public class myprofile extends AppCompatActivity {
+public class ShowMyProfileActivity extends AppCompatActivity {
     private TextView username, userid, mainsinger, song, profile, profilename, evaluate, eval1, eval2, eval3, eval4, favoritesongs;
     private ImageButton add, option;
 
@@ -80,7 +84,7 @@ public class myprofile extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myprofile);
+        setContentView(R.layout.activity_my_profile);
         init();
         Toast.makeText(this, "init 완료", Toast.LENGTH_SHORT).show();
         showprofile();
@@ -110,14 +114,44 @@ public class myprofile extends AppCompatActivity {
         // 리사이클러뷰
         RecyclerView audioRecyclerView = findViewById(R.id.recycler_songs);
         audioList = new ArrayList<>();
-        audioAdapter = new AudioAdapter(this, audioList);
+        ArrayList<String> titleList = new ArrayList<>();
+        audioAdapter = new AudioAdapter(this, audioList,titleList);
+
+
+        StorageReference listRef = storage.getReference().child(id);
+
+        listRef.listAll()
+                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        for (StorageReference prefix : listResult.getPrefixes()) {
+
+                            Log.d("wow", audioUri.toString());
+                            Log.d("upload", prefix.toString());
+                        }
+
+                        for (StorageReference item : listResult.getItems()) {
+                            item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    audioList.add(uri);
+                                    titleList.add(item.getName());
+                                    audioAdapter.notifyDataSetChanged();
+                                    Log.d("upload", uri.toString());
+                                }
+                            });
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("upload", e.getMessage());
+                    }
+                });
 
         // 이주엽 수정부분 22222222222222 리사이클러뷰 보여주기
-        for (int i=1;i<audiofiles.length;i++){
-            audioUri = Uri.parse(audiofiles[i].getAbsolutePath());
-            audioList.add(audioUri);
-            audioAdapter.notifyDataSetChanged();
-        }
+
         audioRecyclerView.setAdapter(audioAdapter);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -128,14 +162,14 @@ public class myprofile extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
 
-                String uriName = String.valueOf(audioList.get(position));
+                String file = String.valueOf(audioList.get(position));
 
                 /*음성 녹화 파일에 대한 접근 변수 생성;
                      (ImageView)를 붙여줘서 View 객체를 형변환 시켜줌.
                      전역변수로 한 이유는
                     * */
 
-                File file = new File(uriName);
+
 
                 if(isPlaying){
                     // 음성 녹화 파일이 여러개를 클릭했을 때 재생중인 파일의 Icon을 비활성화(비 재생중)으로 바꾸기 위함.
@@ -146,7 +180,6 @@ public class myprofile extends AppCompatActivity {
                         // 다른 음성 파일을 클릭했을 경우
                         // 기존의 재생중인 파일 중지
                         stopAudio();
-
                         // 새로 파일 재생하기
                         playIcon = (ImageView)view;
                         playAudio(file);
@@ -199,7 +232,6 @@ public class myprofile extends AppCompatActivity {
                             eval2.setText(document.getData().get("evaluation2").toString());
                             eval3.setText(document.getData().get("evaluation3").toString());
                             eval4.setText(document.getData().get("evaluation4").toString());
-
                         } else {
                             Log.d(TAG, "YOU MUST LOGIN FIRST");
                             android.os.Process.killProcess(android.os.Process.myPid());
@@ -212,7 +244,7 @@ public class myprofile extends AppCompatActivity {
         add.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), upload_option.class);
+                Intent intent = new Intent(getApplicationContext(), SelectUploadOptionActivity.class);
                 startActivity(intent);
             }
         });
@@ -228,11 +260,10 @@ public class myprofile extends AppCompatActivity {
 
     }
 
-    private void playAudio(File file) {
+    private void playAudio(String file) {
         mediaPlayer = new MediaPlayer();
-
         try {
-            mediaPlayer.setDataSource(file.getAbsolutePath());
+            mediaPlayer.setDataSource(file);
             mediaPlayer.prepare();
             mediaPlayer.start();
         } catch (IOException e) {

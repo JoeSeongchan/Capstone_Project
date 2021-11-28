@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/moimtitle"
-            android:text="흑석동"
-            android:textSize="20dp"
+            android:gravity="center"
             android:padding="8dp"
-            android:gravity="center"/>
+            android:text="흑석동"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/moimtimeattack"

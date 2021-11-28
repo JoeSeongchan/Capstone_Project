@@ -3,12 +3,20 @@ package com.example.capstone;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,15 +24,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class func_record extends AppCompatActivity {
+public class FuncRecord extends AppCompatActivity {
     MediaRecorder recorder;
     String filePath;
+
+    //firebase & id
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private String userid="IOxZt7qFPxdE93PNtElzSztmYpP2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recording);
+        setContentView(R.layout.activity_record);
 
         findViewById(R.id.record).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +90,30 @@ public class func_record extends AppCompatActivity {
             recorder.stop();
             recorder.release();
             recorder = null;
-            Toast.makeText(this, "녹음 중지됨.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "녹음 중지 및 업로드 중..", Toast.LENGTH_SHORT).show();
+
+
+            Uri fileUri = Uri.fromFile(new File(filePath));
+            Log.d("upload","뭐야이건"+fileUri);
+
+            StorageReference s_ref = storage.getReference();
+            StorageReference r_ref = s_ref.child(userid+"/"+fileUri.getLastPathSegment());
+            Log.d("upload","뭐야이건"+fileUri.getLastPathSegment());
+            UploadTask uploadTask = r_ref.putFile((fileUri));
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.d("upload",exception.getMessage());
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                }
+            });
+
+
+
+
         }
     }
 }

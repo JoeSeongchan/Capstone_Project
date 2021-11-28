@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.capstone.database.groupdisplay;
+import com.example.capstone.database.GroupDisplay;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class GroupAdapter extends RecyclerView.Adapter {
     //리사이클러뷰에 넣을 데이터 리스트
-    List<groupdisplay> group;
+    List<GroupDisplay> group;
     Context context;
     String title;
     int timeattack,distance,member;
@@ -28,19 +28,19 @@ public class GroupAdapter extends RecyclerView.Adapter {
 
 
 
-    public GroupAdapter(Context context, List<groupdisplay> group){
+    public GroupAdapter(Context context, List<GroupDisplay> group){
         this.group = group;
         this.context = context;
     }
 
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_party_main, parent, false);
         GroupAdapter.MyViewHolder viewHolder = new GroupAdapter.MyViewHolder(view);
         return viewHolder; }
 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder)holder;
-        groupdisplay groupthis = group.get(position);
+        GroupDisplay groupthis = group.get(position);
 
 
         String title = groupthis.getTitle();

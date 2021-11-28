@@ -1,6 +1,6 @@
 package com.example.capstone.database;
 
-public class group {
+public class Group {
 
         String  id;
         String hostid;
@@ -10,7 +10,7 @@ public class group {
         int endtime;
         String title;
 
-        public group(){}
+        public Group(){}
 
         public String getid() {
                 return id;
@@ -57,7 +57,7 @@ public class group {
 
 
         //이거는 그룹을 생성할때 사용하는 부분
-        public group(String title, String id, int max, String hostid, String placeid, int starttime, int endtime) {
+        public Group(String title, String id, int max, String hostid, String placeid, int starttime, int endtime) {
                 this.id = id;
                 this.title = title;
                 this.max = max;

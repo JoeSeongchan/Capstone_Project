@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.capstone.database.groupdisplay;
+import com.example.capstone.database.GroupDisplay;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,11 +29,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class main extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView; // 바텀 네비게이션 뷰
     private FragmentManager fm;
     private FragmentTransaction ft;
-    private myprofile myprofile;
+    private ShowMyProfileActivity myprofile;
 
     //리사이클러 뷰 관련
     private boolean isScrolling = false;
@@ -46,12 +46,12 @@ public class main extends AppCompatActivity {
 
     /** 리사이클러뷰 */
     private GroupAdapter groupAdapter;
-    private List<groupdisplay> groupList;
+    private List<GroupDisplay> groupList;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_main);
         recyclerv();
         initrest();
     }
@@ -80,7 +80,7 @@ public class main extends AppCompatActivity {
                             } else {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
-                                    groupList.add(new groupdisplay(
+                                    groupList.add(new GroupDisplay(
                                             document.getData().get("title").toString(),
                                             "서울시",
                                             3,
@@ -120,13 +120,12 @@ public class main extends AppCompatActivity {
                                                         if (t.isSuccessful()) {
                                                             for (DocumentSnapshot d : t.getResult()) {
                                                                 // 데이터 모델 수정
-                                                                groupList.add(new groupdisplay(
+                                                                groupList.add(new GroupDisplay(
                                                                         d.getData().get("title").toString(),
                                                                         "서울시",
                                                                         3,
                                                                         2,
                                                                         Long.parseLong(d.getData().get("starttime").toString())));
-
                                                             }
                                                             // 어댑터 수정
                                                             groupAdapter.notifyDataSetChanged();

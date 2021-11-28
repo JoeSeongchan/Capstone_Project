@@ -15,16 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone">
         <activity
-            android:name=".upload_option"
+            android:name=".SelectUploadOptionActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".func_record"
+            android:name=".FuncRecord"
             />
 
         <activity
-            android:name=".myprofile"
+            android:name=".ShowMyProfileActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
         </activity>
 
         <activity
-            android:name=".main"
+            android:name=".HomeActivity"
             android:exported="true">
 
         </activity>
