@@ -32,6 +32,14 @@ android {
     viewBinding {
         enabled = true
     }
+    sourceSets {
+        main {
+            res {
+                srcDirs 'src\\main\\res', 'src\\main\\res\\layouts\\home'
+            }
+        }
+    }
+
 }
 
 dependencies {

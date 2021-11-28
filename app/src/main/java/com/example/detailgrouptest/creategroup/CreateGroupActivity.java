@@ -1,4 +1,4 @@
-package com.example.detailgrouptest.DB.entity.creategroup;
+package com.example.detailgrouptest.creategroup;
 
 import static android.content.ContentValues.TAG;
 
@@ -10,12 +10,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.detailgrouptest.DB.entity.Party;
-import com.example.detailgrouptest.DB.entity.Party.AgeDetail;
-import com.example.detailgrouptest.DB.entity.Party.Gender;
-import com.example.detailgrouptest.DB.entity.Party.Genre;
 import com.example.detailgrouptest.R;
 import com.example.detailgrouptest.databinding.ActivityCreateGroupBinding;
+import com.example.detailgrouptest.db.entity.Party;
+import com.example.detailgrouptest.db.entity.Party.AgeDetail;
+import com.example.detailgrouptest.db.entity.Party.Gender;
+import com.example.detailgrouptest.db.entity.Party.Genre;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalTime;

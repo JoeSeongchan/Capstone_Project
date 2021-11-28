@@ -1,4 +1,4 @@
-package com.example.detailgrouptest.DB.entity;
+package com.example.detailgrouptest.db.entity;
 
 import androidx.annotation.NonNull;
 import java.util.Date;

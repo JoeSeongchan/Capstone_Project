@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.detailgrouptest.DB.entity.creategroup.CreateGroupActivity;
+import com.example.detailgrouptest.creategroup.CreateGroupActivity;
 
 public class MainActivity extends AppCompatActivity {
 
