@@ -62,7 +62,7 @@
                         android:text="모임 모집 현황" />
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/groupDetail_tv_memberNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAlignment="textEnd"
@@ -131,10 +131,30 @@
                     android:text="참가자 리스트" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/groupDetail_btn_member1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="멤버 닉네임(동적버튼생성)호스트 앞에는 왕관이미지" />
+                <Button
+                  android:id="@+id/groupDetail_btn_member2"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Button" />
+                <Button
+                  android:id="@+id/groupDetail_btn_member3"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Button" />
+                <Button
+                  android:id="@+id/groupDetail_btn_member4"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Button" />
+                <Button
+                  android:id="@+id/groupDetail_btn_member5"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Button" />
             </LinearLayout>
 
         </LinearLayout>

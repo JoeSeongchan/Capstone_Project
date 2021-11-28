@@ -3,15 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Administrator/Desktop/gitkraken/Capstone_Project/app/src/main/res/layout/activity_create_group.xml" value="0.24610591900311526" />
-        <entry key="..\:/Users/Administrator/Desktop/gitkraken/Capstone_Project/app/src/main/res/layout/create_group.xml" value="0.33" />
-        <entry key="..\:/Users/Administrator/Desktop/gitkraken/Capstone_Project/app/src/main/res/layout/group_detail.xml" value="0.13148148148148148" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/button_back.xml" value="0.1" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/selector_button.xml" value="0.1" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/shape_clicked.xml" value="0.1" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/drawable/shape_unclieked.xml" value="0.1" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_create_group.xml" value="0.4" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_group_info.xml" value="0.264" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/bottom_nav.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/btn_group_member.xml" value="0.15443840579710144" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/create_group.xml" value="0.264" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/frag_test1.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LS_CAP/AndroidStudioProjects/DetailGroupTest/app/src/main/res/layout/fragment_dashboard.xml" value="0.25364583333333335" />
